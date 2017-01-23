@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+ #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 v 0.1:  Almost operative
@@ -135,11 +135,6 @@ class ImageView(QtGui.QGraphicsView):
     def mousePressEvent(self, event):
         self.isSelected = True
         self.selected.emit(self.id_number)
-        bt = event.button()
-        if bt == Qt.LeftButton:
-            print "left"
-        elif bt == Qt.RightButton:
-            print "right"
         if self.scene().pixmap is None:
             super(ImageView, self).mousePressEvent(event)
             return
@@ -181,17 +176,17 @@ class ImageView(QtGui.QGraphicsView):
 
                     # self.mouseDoubleClickEvent(event)
                     event.ignore()
-        elif self.mid_operation == self.OP_WL:
+        if event.button() == Qt.RightButton:
+            self.setCursor(self.CURSOR_WL)
             self.x_cursor = event.pos().x()
             self.y_cursor = event.pos().y()
-        else:
-            super(ImageView, self).mousePressEvent(event)
+            return
+        super(ImageView, self).mousePressEvent(event)
 
     def mouseMoveEvent(self, event):
         if self.scene().pixmap is None:
             super(ImageView, self).mouseMoveEvent(event)
             return
-        self.setCursor(self.DEFAULT_CURSOR)
         if self.mid_operation == self.OP_SELECT:
             p = self.mapToScene(event.pos())
             val = self.image.value_at(p.x(), p.y())
@@ -214,7 +209,8 @@ class ImageView(QtGui.QGraphicsView):
             val = self.image.value_at(mouse_point.x(), mouse_point.y())
             val = str(val)
             self.view_updated.emit("(%i,%i) %s" % (mouse_point.x(), mouse_point.y(), val))
-        elif self.mid_operation == self.OP_WL and self.x_cursor is not None:
+        # the returned value for event.button() is always Qt.NoButton for mouse move events -> must use buttons
+        if event.buttons() == Qt.RightButton:
             dx = event.pos().x() - self.x_cursor
             dy = event.pos().y() - self.y_cursor
             new_center = self.image.attributes['center'] + dx / float(self.width()) * self.WL_RANGE
@@ -240,6 +236,8 @@ class ImageView(QtGui.QGraphicsView):
             self.y_cursor = event.pos().y()
             txt = "window: %i, center: %i" % (new_window, new_center)
             self.view_updated.emit(txt)
+            return
+        self.setCursor(self.DEFAULT_CURSOR)
 
     def mouseDoubleClickEvent(self, event):
         if self.scene().pixmap is None:
@@ -280,7 +278,7 @@ class ImageView(QtGui.QGraphicsView):
             self.roi = None
             self.mid_operation = self.OP_SELECT
             self.setCursor(self.DEFAULT_CURSOR)
-        elif self.mid_operation == self.OP_WL:
+        elif event.button() == Qt.RightButton:
             dlg = WLDialog(self.image, self.overlay_image, self.parent())
             dlg.update_images.connect(self.update_dicom_image)
             if self.overlay_image is not None:
@@ -294,17 +292,18 @@ class ImageView(QtGui.QGraphicsView):
                     self.overlay_image.lower_value = dlg.low0
                     self.overlay_image.upper_value = dlg.high0
                     self.update_overlay_image()
-        else:
-            super(ImageView, self).mouseDoubleClickEvent(event)
+            return
+        super(ImageView, self).mouseDoubleClickEvent(event)
 
 #
 # <----------------- End of events processing ------------------>
 #
 
     def mouseReleaseEvent(self, event):
-        if self.mid_operation == self.OP_WL and self.x_cursor is not None:
+        if event.button() == Qt.RightButton:
             self.x_cursor = None
             self.y_cursor = None
+            self.setCursor(self.DEFAULT_CURSOR)
         else:
             super(ImageView, self).mouseReleaseEvent(event)
 

@@ -105,14 +105,6 @@ class ViDi(QtGui.QMainWindow, ui_ViDi.Ui_MainWindow):
                             border: 2px solid rgb(128,255,128);  border-radius: 10px;\
                             background: qlineargradient( x1:0 y1:0, x2:1 y2:1, stop:0.2 'green', stop:1 'gray'); }")
 
-        # Group some actions
-        self.mouse_task = QtGui.QActionGroup(self)
-        self.mouse_task.addAction(self.act_select)
-        self.mouse_task.addAction(self.act_change_slice)
-        self.mouse_task.addAction(self.actWL)
-        self.mouse_task.addAction(self.act_zoom)
-        self.mouse_task.addAction(self.act_roi_pol)
-        self.mouse_task.addAction(self.act_roi_circ)
         # Add view(s)
         w = QtGui.QWidget()
         l = QtGui.QHBoxLayout()
@@ -127,12 +119,12 @@ class ViDi(QtGui.QMainWindow, ui_ViDi.Ui_MainWindow):
         self.view.view_updated.connect(self.show_message)
         self.view.load_overlay.connect(self.load_overlay)
         self.act_open_file.triggered.connect(self.load_image)
-        self.act_hybrid.triggered.connect(self.load_overlay)
-        self.mouse_task.triggered.connect(self.set_operation)
-        self.mouse_task.triggered.connect(self.check_buttons_state)
+        self.tb_edit.actionTriggered.connect(self.set_operation)
+
+        self.view.roi_finished.connect(self.act_select.setChecked)
+
         self.act_roi_auto.triggered.connect(self.view.set_auto_roi)
         self.act_clone_rois.triggered.connect(self.view.clone_rois)
-        self.view.roi_finished.connect(self.act_select.setChecked)
         self.act_get_stats.triggered.connect(self.view.show_stats)
         self.act_show_info.triggered.connect(self.view.show_info)
         #
@@ -206,10 +198,10 @@ class ViDi(QtGui.QMainWindow, ui_ViDi.Ui_MainWindow):
 
     def set_operation(self, action):
         """Change the operation in the view (See ViDiGraphics)"""
-        if action:
-            i = self.mouse_task.actions().index(action)
-            self.check_buttons_state()
-            self.view.set_operation(i)
+        if action == self.act_zoom:
+            self.view.set_operation(1, self.view.OP_MIDDLE_ZOOM if self.act_zoom.isChecked()
+                                    else self.view.OP_MIDDLE_CHANGE_Z)
+
 
     def show_message(self, txt):
         """Show message in status bar"""
