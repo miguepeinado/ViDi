@@ -1,0 +1,1132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="dff62cd8-8828-4779-8524-44b9d605af0d" name="Default" comment="" />
+    <ignored path="ViDi.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="ViDi" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ViDiGraphics.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ViDiGraphics.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="416" column="58" selection-start-line="416" selection-start-column="58" selection-end-line="416" selection-end-column="58" />
+              <folding>
+                <element signature="n#!!doc" expanded="false" />
+                <element signature="e#46#159#1" expanded="false" />
+                <element signature="e#604#665#1" expanded="false" />
+                <element signature="e#2092#2093#0" expanded="false" />
+                <element signature="e#2291#2425#0" expanded="false" />
+                <element signature="e#2472#2607#0" expanded="false" />
+                <element signature="e#2659#2660#0" expanded="false" />
+                <element signature="e#2881#4804#0" expanded="false" />
+                <element signature="e#3264#3300#0" expanded="false" />
+                <element signature="e#3612#3721#0" expanded="false" />
+                <element signature="e#4122#4544#0" expanded="false" />
+                <element signature="e#4970#5034#0" expanded="false" />
+                <element signature="e#5953#6826#0" expanded="false" />
+                <element signature="e#6243#6826#0" expanded="false" />
+                <element signature="e#6284#6622#0" expanded="false" />
+                <element signature="e#6480#6587#0" expanded="false" />
+                <element signature="e#6665#6826#0" expanded="false" />
+                <element signature="e#6665#6687#0" expanded="false" />
+                <element signature="e#6883#6958#0" expanded="false" />
+                <element signature="e#7077#9701#0" expanded="false" />
+                <element signature="e#7121#7184#0" expanded="false" />
+                <element signature="e#7243#7587#0" expanded="false" />
+                <element signature="e#7688#8405#0" expanded="false" />
+                <element signature="e#7978#8145#0" expanded="false" />
+                <element signature="e#8492#9701#0" expanded="false" />
+                <element signature="e#9105#9152#0" expanded="false" />
+                <element signature="e#9431#9432#0" expanded="false" />
+                <element signature="e#9755#12561#0" expanded="false" />
+                <element signature="e#9799#9869#0" expanded="false" />
+                <element signature="e#10091#10249#0" expanded="false" />
+                <element signature="e#10882#11623#0" expanded="false" />
+                <element signature="e#11019#11177#0" expanded="false" />
+                <element signature="e#11680#12412#0" expanded="false" />
+                <element signature="e#11981#12412#0" expanded="false" />
+                <element signature="e#12202#12412#0" expanded="false" />
+                <element signature="e#12492#12493#0" expanded="false" />
+                <element signature="e#12816#12817#0" expanded="false" />
+                <element signature="e#12993#13622#0" expanded="false" />
+                <element signature="e#13556#13557#0" expanded="false" />
+                <element signature="e#13670#13812#0" expanded="false" />
+                <element signature="e#13854#14021#0" expanded="false" />
+                <element signature="e#14071#15912#0" expanded="false" />
+                <element signature="e#14204#14727#0" expanded="false" />
+                <element signature="e#14292#14464#0" expanded="false" />
+                <element signature="e#14579#14727#0" expanded="false" />
+                <element signature="e#14772#14983#0" expanded="false" />
+                <element signature="e#16046#16335#0" expanded="false" />
+                <element signature="e#18352#18857#0" expanded="false" />
+                <element signature="e#18912#19055#0" expanded="false" />
+                <element signature="e#19110#21184#0" expanded="false" />
+                <element signature="e#21222#21240#0" expanded="false" />
+                <element signature="e#21298#21589#0" expanded="false" />
+                <element signature="e#21325#21502#0" expanded="false" />
+                <element signature="e#21366#21433#0" expanded="false" />
+                <element signature="e#21633#22168#0" expanded="false" />
+                <element signature="e#22629#23901#0" expanded="false" />
+                <element signature="e#22682#22910#0" expanded="false" />
+                <element signature="e#22958#23172#0" expanded="false" />
+                <element signature="e#23228#23822#0" expanded="false" />
+                <element signature="e#23588#23730#0" expanded="false" />
+                <element signature="e#23757#23822#0" expanded="false" />
+                <element signature="e#23860#23901#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ViDi.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ViDi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="30" column="69" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/MyDicom/DicomImage.py" />
+        <option value="$PROJECT_DIR$/MyDicom/ImageLoader.py" />
+        <option value="$PROJECT_DIR$/../DICOM_HEX/dhm.py" />
+        <option value="$PROJECT_DIR$/../MyTools/MyMath.py" />
+        <option value="$PROJECT_DIR$/../DICOM_HEX/prueba.py" />
+        <option value="$PROJECT_DIR$/../MyTools/misc.py" />
+        <option value="$PROJECT_DIR$/../MyTools/MyWidgets.py" />
+        <option value="$PROJECT_DIR$/prueba.py" />
+        <option value="$PROJECT_DIR$/../DQE/gui.py" />
+        <option value="$PROJECT_DIR$/MyDicom/tools.py" />
+        <option value="$PROJECT_DIR$/MyDicom/__init__.py" />
+        <option value="$PROJECT_DIR$/../MyTools/__init__.py" />
+        <option value="$PROJECT_DIR$/MyDicom/loader.py" />
+        <option value="$PROJECT_DIR$/MyDialogs/window_level.py" />
+        <option value="$PROJECT_DIR$/MyDialogs/__init__.py" />
+        <option value="$PROJECT_DIR$/rois/label.py" />
+        <option value="$PROJECT_DIR$/rois/polygonal_roi.py" />
+        <option value="$PROJECT_DIR$/rois/statistics.py" />
+        <option value="$PROJECT_DIR$/rois/__init__.py" />
+        <option value="$PROJECT_DIR$/MyDialogs/roi_stats.py" />
+        <option value="$PROJECT_DIR$/Rois/label.py" />
+        <option value="$PROJECT_DIR$/Rois/Voi.py" />
+        <option value="$PROJECT_DIR$/Rois/__init__.py" />
+        <option value="$PROJECT_DIR$/ViDiGraphics(0.1).py" />
+        <option value="$PROJECT_DIR$/../MyTools/geometry.py" />
+        <option value="$PROJECT_DIR$/Dialogs/roi_stats.py" />
+        <option value="$PROJECT_DIR$/Rois/circular_roi.py" />
+        <option value="$PROJECT_DIR$/Rois/voi.py" />
+        <option value="$PROJECT_DIR$/MyDicom/dicom_image.py" />
+        <option value="$PROJECT_DIR$/Rois/polygonal_roi.py" />
+        <option value="$PROJECT_DIR$/ViDiGraphics.py" />
+        <option value="$PROJECT_DIR$/Rois/statistics.py" />
+        <option value="$PROJECT_DIR$/ViDi.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="24" />
+    <option name="width" value="1600" />
+    <option name="height" value="876" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="MyTools">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="$PROJECT_DIR$/../MyTools">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ViDi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ViDi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ViDi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyDependenciesConfigurable" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Dosimetria-MN" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/MyDicom" />
+      <recent name="$PROJECT_DIR$/images" />
+      <recent name="$PROJECT_DIR$/Previous work" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Dialogs" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/MyDicom" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.ViDi">
+    <configuration default="false" name="ViDi" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python2.7" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ViDi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ViDi.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="prueba" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ViDi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prueba.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="tools" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python2.7" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MyDicom" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ViDi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MyDicom/tools.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="geometry" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../MyTools" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ViDi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../MyTools/geometry.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="roi_stats" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MyDialogs" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ViDi" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MyDialogs/roi_stats.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ViDi" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ViDi" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ViDi" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ViDi" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ViDi" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ViDi" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ViDi" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Python.ViDi" />
+      <item index="1" class="java.lang.String" itemvalue="Python.prueba" />
+      <item index="2" class="java.lang.String" itemvalue="Python.tools" />
+      <item index="3" class="java.lang.String" itemvalue="Python.geometry" />
+      <item index="4" class="java.lang.String" itemvalue="Python.roi_stats" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.ViDi" />
+        <item index="1" class="java.lang.String" itemvalue="Python.geometry" />
+        <item index="2" class="java.lang.String" itemvalue="Python.roi_stats" />
+        <item index="3" class="java.lang.String" itemvalue="Python.tools" />
+        <item index="4" class="java.lang.String" itemvalue="Python.prueba" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dff62cd8-8828-4779-8524-44b9d605af0d" name="Default" comment="" />
+      <created>1479455612899</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1479455612899</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="24" width="1600" height="876" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1357007" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32692307" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33846155" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22820513" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3974359" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="453" y="52" width="798" height="847" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="104" y="223" width="1400" height="676" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33846155" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22820513" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1357007" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32692307" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3974359" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="102" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../DICOM_HEX/prueba.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ViDi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1819">
+          <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyDicom/loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2176">
+          <caret line="139" column="54" selection-start-line="139" selection-start-column="54" selection-end-line="139" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyDicom/dicom_image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ViDiGraphics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="187" column="53" selection-start-line="187" selection-start-column="53" selection-end-line="187" selection-end-column="53" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#46#159#1" expanded="false" />
+            <element signature="e#604#665#1" expanded="false" />
+            <element signature="e#2092#2093#0" expanded="false" />
+            <element signature="e#2291#2425#0" expanded="false" />
+            <element signature="e#2472#2607#0" expanded="false" />
+            <element signature="e#2659#2660#0" expanded="false" />
+            <element signature="e#2881#4804#0" expanded="false" />
+            <element signature="e#3264#3300#0" expanded="false" />
+            <element signature="e#3612#3721#0" expanded="false" />
+            <element signature="e#4122#4544#0" expanded="false" />
+            <element signature="e#4970#5034#0" expanded="false" />
+            <element signature="e#5953#6826#0" expanded="false" />
+            <element signature="e#6243#6826#0" expanded="false" />
+            <element signature="e#6284#6622#0" expanded="false" />
+            <element signature="e#6480#6587#0" expanded="false" />
+            <element signature="e#6665#6826#0" expanded="false" />
+            <element signature="e#6665#6687#0" expanded="false" />
+            <element signature="e#6883#6958#0" expanded="false" />
+            <element signature="e#7077#9701#0" expanded="false" />
+            <element signature="e#7121#7184#0" expanded="false" />
+            <element signature="e#7243#7587#0" expanded="false" />
+            <element signature="e#7688#8405#0" expanded="false" />
+            <element signature="e#7978#8145#0" expanded="false" />
+            <element signature="e#8492#9701#0" expanded="false" />
+            <element signature="e#9105#9152#0" expanded="false" />
+            <element signature="e#9431#9432#0" expanded="false" />
+            <element signature="e#9755#12561#0" expanded="false" />
+            <element signature="e#9799#9869#0" expanded="false" />
+            <element signature="e#10091#10249#0" expanded="false" />
+            <element signature="e#10882#11623#0" expanded="false" />
+            <element signature="e#11019#11177#0" expanded="false" />
+            <element signature="e#11680#12412#0" expanded="false" />
+            <element signature="e#11981#12412#0" expanded="false" />
+            <element signature="e#12202#12412#0" expanded="false" />
+            <element signature="e#12492#12493#0" expanded="false" />
+            <element signature="e#12816#12817#0" expanded="false" />
+            <element signature="e#12993#13622#0" expanded="false" />
+            <element signature="e#13556#13557#0" expanded="false" />
+            <element signature="e#13670#13812#0" expanded="false" />
+            <element signature="e#13854#14021#0" expanded="false" />
+            <element signature="e#14071#15912#0" expanded="false" />
+            <element signature="e#14204#14727#0" expanded="false" />
+            <element signature="e#14292#14464#0" expanded="false" />
+            <element signature="e#14579#14727#0" expanded="false" />
+            <element signature="e#14772#14983#0" expanded="false" />
+            <element signature="e#16046#16335#0" expanded="false" />
+            <element signature="e#18352#18857#0" expanded="false" />
+            <element signature="e#18912#19055#0" expanded="false" />
+            <element signature="e#19110#21184#0" expanded="false" />
+            <element signature="e#21222#21240#0" expanded="false" />
+            <element signature="e#21298#21589#0" expanded="false" />
+            <element signature="e#21325#21502#0" expanded="false" />
+            <element signature="e#21366#21433#0" expanded="false" />
+            <element signature="e#21633#22168#0" expanded="false" />
+            <element signature="e#22629#23901#0" expanded="false" />
+            <element signature="e#22682#22910#0" expanded="false" />
+            <element signature="e#22958#23172#0" expanded="false" />
+            <element signature="e#23228#23822#0" expanded="false" />
+            <element signature="e#23588#23730#0" expanded="false" />
+            <element signature="e#23757#23822#0" expanded="false" />
+            <element signature="e#23860#23901#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ViDi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2465">
+          <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyDicom/loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2414">
+          <caret line="153" column="16" selection-start-line="153" selection-start-column="16" selection-end-line="153" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ViDiGraphics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#46#159#1" expanded="false" />
+            <element signature="e#604#665#1" expanded="false" />
+            <element signature="e#2092#2093#0" expanded="false" />
+            <element signature="e#2291#2425#0" expanded="false" />
+            <element signature="e#2472#2607#0" expanded="false" />
+            <element signature="e#2659#2660#0" expanded="false" />
+            <element signature="e#2881#4804#0" expanded="false" />
+            <element signature="e#3264#3300#0" expanded="false" />
+            <element signature="e#3612#3721#0" expanded="false" />
+            <element signature="e#4122#4544#0" expanded="false" />
+            <element signature="e#4970#5034#0" expanded="false" />
+            <element signature="e#5953#6826#0" expanded="false" />
+            <element signature="e#6243#6826#0" expanded="false" />
+            <element signature="e#6284#6622#0" expanded="false" />
+            <element signature="e#6480#6587#0" expanded="false" />
+            <element signature="e#6665#6826#0" expanded="false" />
+            <element signature="e#6665#6687#0" expanded="false" />
+            <element signature="e#6883#6958#0" expanded="false" />
+            <element signature="e#7077#9701#0" expanded="false" />
+            <element signature="e#7121#7184#0" expanded="false" />
+            <element signature="e#7243#7587#0" expanded="false" />
+            <element signature="e#7688#8405#0" expanded="false" />
+            <element signature="e#7978#8145#0" expanded="false" />
+            <element signature="e#8492#9701#0" expanded="false" />
+            <element signature="e#9105#9152#0" expanded="false" />
+            <element signature="e#9431#9432#0" expanded="false" />
+            <element signature="e#9755#12561#0" expanded="false" />
+            <element signature="e#9799#9869#0" expanded="false" />
+            <element signature="e#10091#10249#0" expanded="false" />
+            <element signature="e#10882#11623#0" expanded="false" />
+            <element signature="e#11019#11177#0" expanded="false" />
+            <element signature="e#11680#12412#0" expanded="false" />
+            <element signature="e#11981#12412#0" expanded="false" />
+            <element signature="e#12202#12412#0" expanded="false" />
+            <element signature="e#12492#12493#0" expanded="false" />
+            <element signature="e#12816#12817#0" expanded="false" />
+            <element signature="e#12993#13622#0" expanded="false" />
+            <element signature="e#13556#13557#0" expanded="false" />
+            <element signature="e#13670#13812#0" expanded="false" />
+            <element signature="e#13854#14021#0" expanded="false" />
+            <element signature="e#14071#15912#0" expanded="false" />
+            <element signature="e#14204#14727#0" expanded="false" />
+            <element signature="e#14292#14464#0" expanded="false" />
+            <element signature="e#14579#14727#0" expanded="false" />
+            <element signature="e#14772#14983#0" expanded="false" />
+            <element signature="e#16046#16335#0" expanded="false" />
+            <element signature="e#18352#18857#0" expanded="false" />
+            <element signature="e#18912#19055#0" expanded="false" />
+            <element signature="e#19110#21184#0" expanded="false" />
+            <element signature="e#21222#21240#0" expanded="false" />
+            <element signature="e#21298#21589#0" expanded="false" />
+            <element signature="e#21325#21502#0" expanded="false" />
+            <element signature="e#21366#21433#0" expanded="false" />
+            <element signature="e#21633#22168#0" expanded="false" />
+            <element signature="e#22629#23901#0" expanded="false" />
+            <element signature="e#22682#22910#0" expanded="false" />
+            <element signature="e#22958#23172#0" expanded="false" />
+            <element signature="e#23228#23822#0" expanded="false" />
+            <element signature="e#23588#23730#0" expanded="false" />
+            <element signature="e#23757#23822#0" expanded="false" />
+            <element signature="e#23860#23901#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyDicom/dicom_image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ViDi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyDicom/dicom_image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="129" column="18" selection-start-line="129" selection-start-column="18" selection-end-line="129" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyDicom/loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyDicom/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Previous work/ui_DialogWL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1868">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Previous work/pyGrip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-408">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prueba2.py" />
+    <entry file="file://$PROJECT_DIR$/Previous work/prueba1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../MyWidgets/MyDicom.py" />
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/dicom/filereader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="476" column="0" selection-start-line="476" selection-start-column="0" selection-end-line="476" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../DICOM_HEX/dhm_0.2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../DICOM_HEX/dhm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7316">
+          <caret line="66" column="35" selection-start-line="66" selection-start-column="35" selection-end-line="66" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../DICOM_HEX/prueba.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="1579" column="0" selection-start-line="1579" selection-start-column="0" selection-end-line="1579" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../MyTools/misc.py" />
+    <entry file="file://$PROJECT_DIR$/../MyTools/MyWidgets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prueba.py" />
+    <entry file="file://$PROJECT_DIR$/../DQE/gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_monkey_qt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyDicom/tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../MyTools/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="31" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/logging/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="860" column="0" selection-start-line="860" selection-start-column="0" selection-end-line="860" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/numpy/lib/function_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="1122" column="0" selection-start-line="1122" selection-start-column="0" selection-end-line="1122" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dialogs/window_level.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="74" column="54" selection-start-line="74" selection-start-column="54" selection-end-line="74" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dialogs/ui_WLDialog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="69" selection-start-line="19" selection-start-column="69" selection-end-line="19" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dialogs/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rois/statistics.py" />
+    <entry file="file://$PROJECT_DIR$/MyDicom/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rois/label.py" />
+    <entry file="file://$PROJECT_DIR$/Rois/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/Dialogs/roi_stats0.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="65" column="9" selection-start-line="63" selection-start-column="8" selection-end-line="65" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ViDiGraphics(0.1).py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="384" column="55" selection-start-line="384" selection-start-column="55" selection-end-line="384" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../MyTools/geometry.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="83" column="31" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dialogs/roi_stats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1044">
+          <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rois/circular_roi.py" />
+    <entry file="file://$PROJECT_DIR$/Rois/voi.py" />
+    <entry file="file://$PROJECT_DIR$/MyDicom/loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="160" column="58" selection-start-line="160" selection-start-column="58" selection-end-line="160" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyDicom/dicom_image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="243" column="26" selection-start-line="243" selection-start-column="26" selection-end-line="243" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#379#1723#1" expanded="false" />
+            <element signature="e#2193#2194#0" expanded="false" />
+            <element signature="e#2847#2879#0" expanded="false" />
+            <element signature="e#2928#3255#0" expanded="false" />
+            <element signature="e#3081#3179#0" expanded="false" />
+            <element signature="e#3120#3160#0" expanded="false" />
+            <element signature="e#3257#3258#0" expanded="false" />
+            <element signature="e#3315#3340#0" expanded="false" />
+            <element signature="e#3393#3429#0" expanded="false" />
+            <element signature="e#3469#3659#0" expanded="false" />
+            <element signature="e#3563#3659#0" expanded="false" />
+            <element signature="e#3691#4606#0" expanded="false" />
+            <element signature="e#3749#3850#0" expanded="false" />
+            <element signature="e#4644#4745#0" expanded="false" />
+            <element signature="e#4787#5084#0" expanded="false" />
+            <element signature="e#4829#5037#0" expanded="false" />
+            <element signature="e#5134#5185#0" expanded="false" />
+            <element signature="e#5221#5391#0" expanded="false" />
+            <element signature="e#5427#5538#0" expanded="false" />
+            <element signature="e#5586#5643#0" expanded="false" />
+            <element signature="e#5690#5743#0" expanded="false" />
+            <element signature="e#5792#5818#0" expanded="false" />
+            <element signature="e#5820#5821#0" expanded="false" />
+            <element signature="e#5938#6515#0" expanded="false" />
+            <element signature="e#6001#6358#0" expanded="false" />
+            <element signature="e#6146#6261#0" expanded="false" />
+            <element signature="e#6557#6614#0" expanded="false" />
+            <element signature="e#6796#7563#0" expanded="false" />
+            <element signature="e#7418#7523#0" expanded="false" />
+            <element signature="e#7627#8257#0" expanded="false" />
+            <element signature="e#8259#8260#0" expanded="false" />
+            <element signature="e#8378#8666#1" expanded="false" />
+            <element signature="e#9376#9456#0" expanded="false" />
+            <element signature="e#9622#11387#0" expanded="false" />
+            <element signature="e#9622#9955#1" expanded="false" />
+            <element signature="e#10107#10339#0" expanded="false" />
+            <element signature="e#10446#10530#0" expanded="false" />
+            <element signature="e#10610#11282#0" expanded="false" />
+            <element signature="e#10794#10877#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rois/statistics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1134">
+          <caret line="65" column="43" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Rois/polygonal_roi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="114" column="50" selection-start-line="114" selection-start-column="50" selection-end-line="114" selection-end-column="50" />
+          <folding>
+            <element signature="e#2983#4345#0" expanded="false" />
+            <element signature="e#4869#5879#0" expanded="false" />
+            <element signature="e#7135#7273#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ViDiGraphics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="416" column="58" selection-start-line="416" selection-start-column="58" selection-end-line="416" selection-end-column="58" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#46#159#1" expanded="false" />
+            <element signature="e#604#665#1" expanded="false" />
+            <element signature="e#2092#2093#0" expanded="false" />
+            <element signature="e#2291#2425#0" expanded="false" />
+            <element signature="e#2472#2607#0" expanded="false" />
+            <element signature="e#2659#2660#0" expanded="false" />
+            <element signature="e#2881#4804#0" expanded="false" />
+            <element signature="e#3264#3300#0" expanded="false" />
+            <element signature="e#3612#3721#0" expanded="false" />
+            <element signature="e#4122#4544#0" expanded="false" />
+            <element signature="e#4970#5034#0" expanded="false" />
+            <element signature="e#5953#6826#0" expanded="false" />
+            <element signature="e#6243#6826#0" expanded="false" />
+            <element signature="e#6284#6622#0" expanded="false" />
+            <element signature="e#6480#6587#0" expanded="false" />
+            <element signature="e#6665#6826#0" expanded="false" />
+            <element signature="e#6665#6687#0" expanded="false" />
+            <element signature="e#6883#6958#0" expanded="false" />
+            <element signature="e#7077#9701#0" expanded="false" />
+            <element signature="e#7121#7184#0" expanded="false" />
+            <element signature="e#7243#7587#0" expanded="false" />
+            <element signature="e#7688#8405#0" expanded="false" />
+            <element signature="e#7978#8145#0" expanded="false" />
+            <element signature="e#8492#9701#0" expanded="false" />
+            <element signature="e#9105#9152#0" expanded="false" />
+            <element signature="e#9431#9432#0" expanded="false" />
+            <element signature="e#9755#12561#0" expanded="false" />
+            <element signature="e#9799#9869#0" expanded="false" />
+            <element signature="e#10091#10249#0" expanded="false" />
+            <element signature="e#10882#11623#0" expanded="false" />
+            <element signature="e#11019#11177#0" expanded="false" />
+            <element signature="e#11680#12412#0" expanded="false" />
+            <element signature="e#11981#12412#0" expanded="false" />
+            <element signature="e#12202#12412#0" expanded="false" />
+            <element signature="e#12492#12493#0" expanded="false" />
+            <element signature="e#12816#12817#0" expanded="false" />
+            <element signature="e#12993#13622#0" expanded="false" />
+            <element signature="e#13556#13557#0" expanded="false" />
+            <element signature="e#13670#13812#0" expanded="false" />
+            <element signature="e#13854#14021#0" expanded="false" />
+            <element signature="e#14071#15912#0" expanded="false" />
+            <element signature="e#14204#14727#0" expanded="false" />
+            <element signature="e#14292#14464#0" expanded="false" />
+            <element signature="e#14579#14727#0" expanded="false" />
+            <element signature="e#14772#14983#0" expanded="false" />
+            <element signature="e#16046#16335#0" expanded="false" />
+            <element signature="e#18352#18857#0" expanded="false" />
+            <element signature="e#18912#19055#0" expanded="false" />
+            <element signature="e#19110#21184#0" expanded="false" />
+            <element signature="e#21222#21240#0" expanded="false" />
+            <element signature="e#21298#21589#0" expanded="false" />
+            <element signature="e#21325#21502#0" expanded="false" />
+            <element signature="e#21366#21433#0" expanded="false" />
+            <element signature="e#21633#22168#0" expanded="false" />
+            <element signature="e#22629#23901#0" expanded="false" />
+            <element signature="e#22682#22910#0" expanded="false" />
+            <element signature="e#22958#23172#0" expanded="false" />
+            <element signature="e#23228#23822#0" expanded="false" />
+            <element signature="e#23588#23730#0" expanded="false" />
+            <element signature="e#23757#23822#0" expanded="false" />
+            <element signature="e#23860#23901#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ViDi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="30" column="69" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

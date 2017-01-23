@@ -1,0 +1,31 @@
+<RCC>
+  <qresource prefix="Others">
+    <file>pictures/ViDi.svg</file>
+  </qresource>
+  <qresource prefix="Actions">
+    <file>pictures/roi-stats.svg</file>
+    <file>pictures/auto-roi.svg</file>
+    <file>pictures/normi-13.svg</file>
+    <file>pictures/open-file.svg</file>
+    <file>pictures/change-slice.svg</file>
+    <file>pictures/select.svg</file>
+    <file>pictures/settings.svg</file>
+    <file>pictures/hbrid.svg</file>
+    <file>pictures/WL.svg</file>
+    <file>pictures/close.svg</file>
+    <file>pictures/zoom.svg</file>
+    <file>pictures/exit.svg</file>
+    <file>pictures/tools.svg</file>
+    <file>pictures/new-circ-roi.svg</file>
+    <file>pictures/new-pol-roi.svg</file>
+    <file>pictures/clone-rois.svg</file>
+  </qresource>
+  <qresource prefix="Cursors">
+    <file>pictures/del-point-cursor.svg</file>
+    <file>pictures/add-point-cursor.svg</file>
+    <file>pictures/change-slice-cursor.svg</file>
+    <file>pictures/WL-cursor.svg</file>
+    <file>pictures/zoom-cursor.svg</file>
+    <file>pictures/arrow-cursor.svg</file>
+  </qresource>
+</RCC>
