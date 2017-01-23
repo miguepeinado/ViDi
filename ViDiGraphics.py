@@ -91,7 +91,8 @@ class ImageView(QtGui.QGraphicsView):
         num_degrees = event.delta() / 8.0
         num_steps = num_degrees / 15.0
         if self.mid_operation == self.OP_MIDDLE_ZOOM:
-            self.setCursor(self.CURSOR_ZOOM)
+            # Must set cursor on viewport to properly update cursor
+            self.viewport().setCursor(self.CURSOR_ZOOM)
             factor = pow(1.125, num_steps)
             z1 = self.scene().zoom * factor
             if z1 < 0.2:
@@ -109,7 +110,7 @@ class ImageView(QtGui.QGraphicsView):
                 txt = "data set is not a sequence"
                 self.view_updated.emit(txt)
                 return
-            self.setCursor(self.CURSOR_CHANGE_SLICE)
+            self.viewport().setCursor(self.CURSOR_CHANGE_SLICE)
             if num_steps > 0:
                 n_z, pixmap = self.image.next_image()
             else:
@@ -138,46 +139,45 @@ class ImageView(QtGui.QGraphicsView):
         if self.scene().pixmap is None:
             super(ImageView, self).mousePressEvent(event)
             return
-        if self.mid_operation == self.OP_ROI_POL:
-            # Limit roi drawing to the image
-            limit_x = self.image.attributes['cols']
-            limit_y = self.image.attributes['rows']
-            mouse_point = self.mapToScene(event.pos())
-            if 0 <= mouse_point.x() < limit_x and 0 <= mouse_point.y() < limit_y:
-                if self.roi is None:
-                    txt = "--- roi %i ---" % (len(self.scene().ROIs)+1)
-                    if self._auto_roi:
-                        pass    # floodfill with point
+        if event.button() == Qt.LeftButton:
+            if self.left_operation == self.OP_ROI_POL:
+                # Limit roi drawing to the image
+                limit_x = self.image.attributes['cols']
+                limit_y = self.image.attributes['rows']
+                mouse_point = self.mapToScene(event.pos())
+                if 0 <= mouse_point.x() < limit_x and 0 <= mouse_point.y() < limit_y:
+                    if self.roi is None:
+                        txt = "--- roi %i ---" % (len(self.scene().ROIs)+1)
+                        if self._auto_roi:
+                            pass    # floodfill with point
+                        else:
+                            self.roi = RoiPol(mouse_point, txt, scene=self.scene())
+                            self.roi.setSelected(True)
                     else:
-                        self.roi = RoiPol(mouse_point, txt, scene=self.scene())
-                        self.roi.setSelected(True)
+                        self.roi.add_point(mouse_point)
                     event.ignore()
-                else:
-                    self.roi.add_point(mouse_point)
-                    event.ignore()
-            return
-        elif self.mid_operation == self.OP_ROI_CIRC:
-            # Limit roi drawing to the image
-            limit_x = self.image.attributes['cols']
-            limit_y = self.image.attributes['rows']
-            mouse_point = self.mapToScene(event.pos())
-            if 0 <= mouse_point.x() < limit_x and 0 <= mouse_point.y() < limit_y:
-                if self.roi is None:
-                    txt = "--- roi %i ---" % (len(self.scene().ROIs) + 1)
-                    if self._auto_roi:
-                        pass  # floodfill with point
+                return
+            elif self.left_operation == self.OP_ROI_CIRC:
+                # Limit roi drawing to the image
+                limit_x = self.image.attributes['cols']
+                limit_y = self.image.attributes['rows']
+                mouse_point = self.mapToScene(event.pos())
+                if 0 <= mouse_point.x() < limit_x and 0 <= mouse_point.y() < limit_y:
+                    if self.roi is None:
+                        txt = "--- roi %i ---" % (len(self.scene().ROIs) + 1)
+                        if self._auto_roi:
+                            pass  # floodfill with point
+                        else:
+                            self.roi = RoiCirc(mouse_point, txt, scene=self.scene())
+                            self.roi.setSelected(True)
+                        event.ignore()
                     else:
-                        self.roi = RoiCirc(mouse_point, txt, scene=self.scene())
-                        self.roi.setSelected(True)
-                    event.ignore()
-                else:
-                    # add the second point
-                    # p = self.roi.mass_center
-
-                    # self.mouseDoubleClickEvent(event)
-                    event.ignore()
-        if event.button() == Qt.RightButton:
-            self.setCursor(self.CURSOR_WL)
+                        # add the second point
+                        # p = self.roi.mass_center
+                        # self.mouseDoubleClickEvent(event)
+                        event.ignore()
+        elif event.button() == Qt.RightButton:
+            self.viewport().setCursor(self.CURSOR_WL)
             self.x_cursor = event.pos().x()
             self.y_cursor = event.pos().y()
             return
@@ -187,28 +187,6 @@ class ImageView(QtGui.QGraphicsView):
         if self.scene().pixmap is None:
             super(ImageView, self).mouseMoveEvent(event)
             return
-        if self.mid_operation == self.OP_SELECT:
-            p = self.mapToScene(event.pos())
-            val = self.image.value_at(p.x(), p.y())
-            val = str(val)
-            self.view_updated.emit("(%i,%i) %s" % (p.x(), p.y(), val))
-            super(ImageView, self).mouseMoveEvent(event)
-            # todo: change cursor when outside the image
-            self.setCursor(self.DEFAULT_CURSOR)
-        elif self.mid_operation == self.OP_ROI_POL or self.mid_operation == self.OP_ROI_CIRC:
-            # Limit roi drawing to the image
-            limit_x = self.image.attributes['cols']
-            limit_y = self.image.attributes['rows']
-            mouse_point = self.mapToScene(event.pos())
-            if 0 <= mouse_point.x() < limit_x and 0 <= mouse_point.y() < limit_y:
-                self.setCursor(self.CURSOR_ADD_POINT)
-                if self.mid_operation == self.OP_ROI_CIRC and self.roi is not None:
-                    self.roi.resize(mouse_point)
-            else:
-                self.setCursor(self.DEFAULT_CURSOR)
-            val = self.image.value_at(mouse_point.x(), mouse_point.y())
-            val = str(val)
-            self.view_updated.emit("(%i,%i) %s" % (mouse_point.x(), mouse_point.y(), val))
         # the returned value for event.button() is always Qt.NoButton for mouse move events -> must use buttons
         if event.buttons() == Qt.RightButton:
             dx = event.pos().x() - self.x_cursor
@@ -237,47 +215,72 @@ class ImageView(QtGui.QGraphicsView):
             txt = "window: %i, center: %i" % (new_window, new_center)
             self.view_updated.emit(txt)
             return
-        self.setCursor(self.DEFAULT_CURSOR)
+        if self.left_operation == self.OP_SELECT:
+            self.viewport().setCursor(self.DEFAULT_CURSOR)
+            p = self.mapToScene(event.pos())
+            val = self.image.value_at(p.x(), p.y())
+            val = str(val)
+            self.view_updated.emit("(%i,%i) %s" % (p.x(), p.y(), val))
+            # if something is selected must propagate events
+            if len(self.scene().selectedItems()) > 0:
+                super(ImageView, self).mouseMoveEvent(event)
+            # self.viewport().setCursor(self.DEFAULT_CURSOR)
+        elif self.left_operation == self.OP_ROI_POL or self.left_operation == self.OP_ROI_CIRC:
+            # Limit roi drawing to the image
+            limit_x = self.image.attributes['cols']
+            limit_y = self.image.attributes['rows']
+            mouse_point = self.mapToScene(event.pos())
+            if 0 <= mouse_point.x() < limit_x and 0 <= mouse_point.y() < limit_y:
+                self.viewport().setCursor(self.CURSOR_ADD_POINT)
+                if self.left_operation == self.OP_ROI_CIRC and self.roi is not None:
+                    self.roi.resize(mouse_point)
+            else:
+                self.viewport().setCursor(self.DEFAULT_CURSOR)
+            val = self.image.value_at(mouse_point.x(), mouse_point.y())
+            val = str(val)
+            self.view_updated.emit("(%i,%i) %s" % (mouse_point.x(), mouse_point.y(), val))
 
     def mouseDoubleClickEvent(self, event):
         if self.scene().pixmap is None:
             super(ImageView, self).mouseDoubleClickEvent(event)
             return
-        if self.mid_operation == self.OP_ROI_POL and self.roi is not None:
-            # todo: Reassign z values when rois already exist and an overlay is added
-            if self.overlay_image is not None:
-                p = self.image.to_ref_frame([QPointF(0, 0)])
-                _, n_z = self.overlay_image.from_ref_frame(p)
-                print "---> overlay z for roi", n_z
-            else:
-                n_z = self.image.current_index
-            self.roi.set_z(n_z)
-            self.roi.default_label_pos()
-            # Is list of rois worth?. Yes, for roi copy/paste operation
-            self.scene().ROIs.append(self.roi)
-            # self.view_updated.emit("roi finished.")
-            self.roi_finished.emit(True)
-            print "put in logger---> ", [p for p in self.roi.polygon()]
-            self.roi = None
-            self.mid_operation = self.OP_SELECT
-            self.setCursor(self.DEFAULT_CURSOR)
-        elif self.mid_operation == self.OP_ROI_CIRC and self.roi is not None:
-            # todo: Reassign z values when rois already exist and an overlay is added
-            if self.overlay_image is not None:
-                p = self.image.to_ref_frame([QPointF(0, 0)])
-                _, n_z = self.overlay_image.from_ref_frame(p)
-                print "---> overlay z for roi", n_z
-            else:
-                n_z = self.image.current_index
-            self.roi.set_z(n_z)
-            self.roi.default_label_pos()
-            # Is list of rois worth?. Yes, for roi copy/paste operation
-            self.scene().ROIs.append(self.roi)
-            self.roi_finished.emit(True)
-            print self.roi
-            self.roi = None
-            self.mid_operation = self.OP_SELECT
-            self.setCursor(self.DEFAULT_CURSOR)
+        if event.button() == Qt.LeftButton:
+            if self.left_operation == self.OP_ROI_POL and self.roi is not None:
+                # todo: Reassign z values when rois already exist and an overlay is added
+                if self.overlay_image is not None:
+                    p = self.image.to_ref_frame([QPointF(0, 0)])
+                    _, n_z = self.overlay_image.from_ref_frame(p)
+                    print "---> overlay z for roi", n_z
+                else:
+                    n_z = self.image.current_index
+                self.roi.set_z(n_z)
+                self.roi.default_label_pos()
+                # Is list of rois worth?. Yes, for roi copy/paste operation
+                self.scene().ROIs.append(self.roi)
+                # self.view_updated.emit("roi finished.")
+                self.roi_finished.emit(True)
+                print "put in logger---> ", [p for p in self.roi.polygon()]
+                self.roi = None
+                self.left_operation = self.OP_SELECT
+                self.viewport().setCursor(self.DEFAULT_CURSOR)
+            elif self.left_operation == self.OP_ROI_CIRC and self.roi is not None:
+                # todo: Reassign z values when rois already exist and an overlay is added
+                if self.overlay_image is not None:
+                    p = self.image.to_ref_frame([QPointF(0, 0)])
+                    _, n_z = self.overlay_image.from_ref_frame(p)
+                    print "---> overlay z for roi", n_z
+                else:
+                    n_z = self.image.current_index
+                self.roi.set_z(n_z)
+                self.roi.default_label_pos()
+                # Is list of rois worth?. Yes, for roi copy/paste operation
+                self.scene().ROIs.append(self.roi)
+                self.roi_finished.emit(True)
+                print self.roi
+                self.roi = None
+                self.left_operation = self.OP_SELECT
+                self.viewport().setCursor(self.DEFAULT_CURSOR)
+            # super(ImageView, self).mouseDoubleClickEvent(event)
         elif event.button() == Qt.RightButton:
             dlg = WLDialog(self.image, self.overlay_image, self.parent())
             dlg.update_images.connect(self.update_dicom_image)
@@ -293,17 +296,12 @@ class ImageView(QtGui.QGraphicsView):
                     self.overlay_image.upper_value = dlg.high0
                     self.update_overlay_image()
             return
-        super(ImageView, self).mouseDoubleClickEvent(event)
-
-#
-# <----------------- End of events processing ------------------>
-#
 
     def mouseReleaseEvent(self, event):
         if event.button() == Qt.RightButton:
             self.x_cursor = None
             self.y_cursor = None
-            self.setCursor(self.DEFAULT_CURSOR)
+            self.viewport().setCursor(self.DEFAULT_CURSOR)
         else:
             super(ImageView, self).mouseReleaseEvent(event)
 
@@ -316,25 +314,9 @@ class ImageView(QtGui.QGraphicsView):
     def set_operation(self, button, operation):
         if button == 0:
             self.left_operation = operation
+            self.scene().clearSelection()
         elif button == 1:
             self.mid_operation = operation
-
-    def set_operationX(self, operation):
-        self.mid_operation = operation
-        print "operation: ", operation
-        self.view_updated.emit("")
-        for it in self.scene().selectedItems():
-            it.setSelected(False)
-        if operation == self.OP_MIDDLE_CHANGE_Z:
-            self.setCursor(self.CURSOR_CHANGE_SLICE)
-        elif operation == self.OP_WL:
-            self.setCursor(self.CURSOR_WL)
-        elif operation == self.OP_MIDDLE_ZOOM:
-            self.setCursor(self.CURSOR_ZOOM)
-        elif operation >= self.OP_ROI_POL:
-            self.setCursor(self.CURSOR_ADD_POINT)
-        else:
-            self.setCursor(self.DEFAULT_CURSOR)
 
 #
 # <----------------------- Methods -------------------------->

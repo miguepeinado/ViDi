@@ -49,7 +49,7 @@ class RoiPol(QGraphicsPolygonItem):
         pen = QPen(self.myOutlineColor)
         zoom = self.scene().zoom
         side = 5./zoom
-        pen.setWidth(2./zoom)
+        pen.setWidthF(2./zoom)
         painter.setPen(pen)
         if option.state & QStyle.State_Selected:
             if self.is_editing():
@@ -67,6 +67,7 @@ class RoiPol(QGraphicsPolygonItem):
             self._is_selected = True
         else:
             self._is_selected = False
+
         painter.setPen(pen)
         painter.drawPolygon(self.polygon())
         f = self._label.font()
@@ -78,12 +79,12 @@ class RoiPol(QGraphicsPolygonItem):
     #
     def mousePressEvent(self, event):
         self.point_edited = self.point_at_cursor(event.pos())
-        ctrl_is_pressed = (event.modifiers() == Qt.ControlModifier)
+        shift_is_pressed = (event.modifiers() == Qt.ShiftModifier)
         # Determine if cursor is near to the center
         self.moving = (geometry.distance2_qt(self.mass_center, event.pos()) <= 16)
         # Determine if cursor is near to a point
         if self.point_edited is None:
-            if self.moving and ctrl_is_pressed:
+            if self.moving and shift_is_pressed:
                 # Erase the whole roi
                 self.scene().ROIs.remove(self)
                 self.scene().removeItem(self)
@@ -98,7 +99,7 @@ class RoiPol(QGraphicsPolygonItem):
                 self.point_edited = add_point_in_segment_n
                 self.setCursor(QCursor(Qt.SizeAllCursor))
         else:
-            if ctrl_is_pressed:
+            if shift_is_pressed:
                 pol = self.polygon()
                 pol.remove(self.point_edited)
                 self.setPolygon(pol)
@@ -108,11 +109,10 @@ class RoiPol(QGraphicsPolygonItem):
         super(RoiPol, self).mousePressEvent(event)
 
     def mouseMoveEvent(self, event):
+        """Used when moving the roi or a single point"""
         if self.point_edited is not None:
-            ctrl_is_pressed = (event.modifiers() == Qt.ControlModifier)
-            if ctrl_is_pressed:
-                pass
-            else:
+            shift_is_pressed = (event.modifiers() == Qt.ShiftModifier)
+            if not shift_is_pressed:
                 # todo: avoid point movement outside image
                 self.replace(self.point_edited, event.pos())
         elif self.moving:
@@ -121,17 +121,17 @@ class RoiPol(QGraphicsPolygonItem):
 
     def hoverMoveEvent(self, event):
         if self.is_editing() and self.isSelected():
-            ctrl_is_pressed = (event.modifiers() == Qt.ControlModifier)
+            shift_is_pressed = (event.modifiers() == Qt.ShiftModifier)
             near_center = (geometry.distance2_qt(self.mass_center, event.pos()) <= 16)
             near_vertex = (self.point_at_cursor(event.pos()) is not None)
             near_border = self.near_segment(event.pos())
             if near_center:
-                if ctrl_is_pressed:
+                if shift_is_pressed:
                     self.setCursor(QCursor(self.DEL_POINT_CURSOR))
                 else:
                     self.setCursor(QCursor(Qt.SizeAllCursor))
             elif near_vertex:
-                if ctrl_is_pressed:
+                if shift_is_pressed:
                     self.setCursor(QCursor(self.DEL_POINT_CURSOR))
                 else:
                     self.setCursor(QCursor(Qt.SizeAllCursor))
@@ -145,9 +145,6 @@ class RoiPol(QGraphicsPolygonItem):
 # <---------------------- Functions -------------------->
 #
 
-    #
-    # <----------------- Methods ------------------------->
-    #
     def add_point(self, point):
         pol = self.polygon()
         pol.append(point)
@@ -171,7 +168,7 @@ class RoiPol(QGraphicsPolygonItem):
 
     def is_editing(self):
         view = self.scene().views()[0]
-        return view._operation == view.OP_SELECT
+        return view.left_operation == view.OP_SELECT
 
     def is_selected(self):
         return self._is_selected
@@ -187,7 +184,7 @@ class RoiPol(QGraphicsPolygonItem):
 
     def point_at_cursor(self, point):
         for p in self.polygon():
-            if geometry.distance2_qt(point, p) <= 9:
+            if geometry.distance2_qt(point, p) <= 16:
                 return self.polygon().indexOf(p)
         return None
 

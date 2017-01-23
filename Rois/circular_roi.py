@@ -41,7 +41,7 @@ class RoiCirc(QGraphicsEllipseItem):
         pen = QPen(self.myOutlineColor)
         zoom = self.scene().zoom
         side = 5./zoom
-        pen.setWidth(2./zoom)
+        pen.setWidthF(2./zoom)
         painter.setPen(pen)
         if option.state & QStyle.State_Selected:
             if self.is_editing():
@@ -74,11 +74,11 @@ class RoiCirc(QGraphicsEllipseItem):
 
     def mousePressEvent(self, event):
         self.point_edited = self.point_at_cursor(event.pos())
-        ctrl_is_pressed = (event.modifiers() == Qt.ControlModifier)
+        shift_is_pressed = (event.modifiers() == Qt.ShiftModifier)
         # Determine if cursor is near to the center
         self.moving = (geometry.distance2_qt(self.mass_center, event.pos()) <= 16)
         # Determine if cursor is near to a point
-        if self.moving and ctrl_is_pressed:
+        if self.moving and shift_is_pressed:
             # Erase the whole roi
             self.scene().ROIs.remove(self)
             self.scene().removeItem(self)
@@ -86,10 +86,8 @@ class RoiCirc(QGraphicsEllipseItem):
 
     def mouseMoveEvent(self, event):
         if self.point_edited:
-            ctrl_is_pressed = (event.modifiers() == Qt.ControlModifier)
-            if ctrl_is_pressed:
-                pass
-            else:
+            shift_is_pressed = (event.modifiers() == Qt.ShiftModifier)
+            if not shift_is_pressed:
                 # todo: avoid point movement outside image
                 self.resize(event.pos())
         elif self.moving:
@@ -98,11 +96,11 @@ class RoiCirc(QGraphicsEllipseItem):
 
     def hoverMoveEvent(self, event):
         if self.is_editing() and self.isSelected():
-            ctrl_is_pressed = (event.modifiers() == Qt.ControlModifier)
+            shift_is_pressed = (event.modifiers() == Qt.ShiftModifier)
             near_center = (geometry.distance2_qt(self.mass_center, event.pos()) <= 9)
             near_vertex = self.point_at_cursor(event.pos())
             if near_center or near_vertex:
-                if ctrl_is_pressed:
+                if near_center and shift_is_pressed:
                     self.setCursor(QCursor(self.DEL_POINT_CURSOR))
                 else:
                     self.setCursor(QCursor(Qt.SizeAllCursor))
@@ -142,7 +140,7 @@ class RoiCirc(QGraphicsEllipseItem):
 
     def is_editing(self):
         view = self.scene().views()[0]
-        return view._operation == view.OP_SELECT
+        return view.left_operation == view.OP_SELECT
 
     def is_selected(self):
         return self._is_selected
@@ -150,7 +148,7 @@ class RoiCirc(QGraphicsEllipseItem):
     def point_at_cursor(self, point):
         r = self.boundingRect()
         p = r.bottomRight()
-        return geometry.distance2_qt(point, p) <= 9
+        return geometry.distance2_qt(point, p) <= 16
 
     def set_text(self, text):
         self._label.setPlainText(text)

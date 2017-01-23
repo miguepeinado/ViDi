@@ -120,8 +120,7 @@ class ViDi(QtGui.QMainWindow, ui_ViDi.Ui_MainWindow):
         self.view.load_overlay.connect(self.load_overlay)
         self.act_open_file.triggered.connect(self.load_image)
         self.tb_edit.actionTriggered.connect(self.set_operation)
-
-        self.view.roi_finished.connect(self.act_select.setChecked)
+        self.view.roi_finished.connect(self.uncheck_rois)
 
         self.act_roi_auto.triggered.connect(self.view.set_auto_roi)
         self.act_clone_rois.triggered.connect(self.view.clone_rois)
@@ -140,8 +139,6 @@ class ViDi(QtGui.QMainWindow, ui_ViDi.Ui_MainWindow):
         logging.info('ViDi started')
         # Install exception handler
         # sys.excepthook = self.exception_handler
-
-
 
 #
 # <------------------------------ Slots ----------------------------->
@@ -192,20 +189,29 @@ class ViDi(QtGui.QMainWindow, ui_ViDi.Ui_MainWindow):
         self.view.set_overlay_image(overlay_image[0])
         self.status_bar.removeWidget(self.progress_bar)
 
-    def check_buttons_state(self):
-        ix = self.mouse_task.actions().index(self.mouse_task.checkedAction())
-        self.tb_rois.setVisible(not (0 < ix < 4))
-
     def set_operation(self, action):
         """Change the operation in the view (See ViDiGraphics)"""
         if action == self.act_zoom:
             self.view.set_operation(1, self.view.OP_MIDDLE_ZOOM if self.act_zoom.isChecked()
                                     else self.view.OP_MIDDLE_CHANGE_Z)
-
+        elif action == self.act_roi_pol:
+            self.view.set_operation(0, self.view.OP_ROI_POL if self.act_roi_pol.isChecked()
+                                    else self.view.OP_SELECT)
+            self.act_roi_circ.setChecked(False)
+            # what if uncheck action when roi not yet finished??
+        elif action == self.act_roi_circ:
+            self.view.set_operation(0, self.view.OP_ROI_CIRC if self.act_roi_circ.isChecked()
+                                    else self.view.OP_SELECT)
+            self.act_roi_pol.setChecked(False)
 
     def show_message(self, txt):
         """Show message in status bar"""
         self.status_bar.showMessage(txt)
+
+    def uncheck_rois(self):
+        for a in self.tb_edit.actions():
+            if a != self.act_zoom and a != self.act_tools:
+                a.setChecked(False)
 
     @staticmethod
     def exception_handler(type, value, tb):
