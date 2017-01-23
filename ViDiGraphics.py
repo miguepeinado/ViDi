@@ -30,9 +30,9 @@ class ImageView(QtGui.QGraphicsView):
         - image: DicomImage object
     """
     OP_SELECT = 0
-    OP_ZOOM = 3
-    OP_WL = 2
-    OP_CHANGE_Z = 1
+    OP_MIDDLE_CHANGE_Z = 1
+    OP_MIDDLE_ZOOM = 2
+    OP_WL = 3
     OP_ROI_POL = 4
     OP_ROI_CIRC = 5
     WL_RANGE = 256
@@ -53,7 +53,8 @@ class ImageView(QtGui.QGraphicsView):
         # self.overlay_scaling_factor = []
         self.setScene(scene)
         self.VOIs = []
-        self._operation = self.OP_SELECT
+        self.mid_operation = self.OP_MIDDLE_CHANGE_Z
+        self.left_operation = self.OP_SELECT
         self._auto_roi = False
         self.roi = None
         self.x_cursor = None
@@ -89,7 +90,8 @@ class ImageView(QtGui.QGraphicsView):
             return
         num_degrees = event.delta() / 8.0
         num_steps = num_degrees / 15.0
-        if self._operation == self.OP_ZOOM:
+        if self.mid_operation == self.OP_MIDDLE_ZOOM:
+            self.setCursor(self.CURSOR_ZOOM)
             factor = pow(1.125, num_steps)
             z1 = self.scene().zoom * factor
             if z1 < 0.2:
@@ -102,41 +104,46 @@ class ImageView(QtGui.QGraphicsView):
             self.scale(factor, factor)
             txt = "zooming: %0.1fx" % z1
             self.view_updated.emit(txt)
-        elif self._operation == self.OP_CHANGE_Z:
-            if self.image is not None:
-                if not self.image.is_sequence:
-                    txt = "data set is not a sequence"
-                    self.view_updated.emit(txt)
-                    return
-                if num_steps > 0:
-                    n_z, pixmap = self.image.next_image()
-                else:
-                    n_z, pixmap = self.image.prev_image()
-                self.scene().set_pixmap(self.image.pixmap())
-                z = self.image.get_slice_location()
-                txt = "slice %i/%i" % ((n_z + 1), self.image.attributes['n_images'])
-                txt2 = "Change slice (n, z)=({},{})".format(n_z, z)
-                if self.overlay_image is not None:
-                    #     change z for rois visibility
-                    p = self.image.to_ref_frame([QPointF(0, 0)])
-                    txt2 += " -> ref frame: {}".format(str(p))
-                    p, n_z = self.overlay_image.from_ref_frame(p)
-                    z = self.overlay_image.slice_locations[n_z]
-                    txt2 += " -> overlay frame {}, {} (z={})".format(str(p[0]), n_z, z)
-                    self.update_overlay_image()
-                    txt += " ({}/{} in overlay)".format((n_z + 1), self.overlay_image.attributes['n_images'])
-                # Set roi visibility depending on roi_z
-                print (txt2)
-                [r.setVisible(n_z == r.roi_z) for r in self.scene().ROIs]
+        elif self.mid_operation == self.OP_MIDDLE_CHANGE_Z:
+            if not self.image.is_sequence:
+                txt = "data set is not a sequence"
                 self.view_updated.emit(txt)
+                return
+            self.setCursor(self.CURSOR_CHANGE_SLICE)
+            if num_steps > 0:
+                n_z, pixmap = self.image.next_image()
+            else:
+                n_z, pixmap = self.image.prev_image()
+            self.scene().set_pixmap(self.image.pixmap())
+            z = self.image.get_slice_location()
+            txt = "slice %i/%i" % ((n_z + 1), self.image.attributes['n_images'])
+            txt2 = "Change slice (n, z)=({},{})".format(n_z, z)
+            if self.overlay_image is not None:
+                #     change z for rois visibility
+                p = self.image.to_ref_frame([QPointF(0, 0)])
+                txt2 += " -> ref frame: {}".format(str(p))
+                p, n_z = self.overlay_image.from_ref_frame(p)
+                z = self.overlay_image.slice_locations[n_z]
+                txt2 += " -> overlay frame {}, {} (z={})".format(str(p[0]), n_z, z)
+                self.update_overlay_image()
+                txt += " ({}/{} in overlay)".format((n_z + 1), self.overlay_image.attributes['n_images'])
+            # Set roi visibility depending on roi_z
+            print (txt2)
+            [r.setVisible(n_z == r.roi_z) for r in self.scene().ROIs]
+            self.view_updated.emit(txt)
 
     def mousePressEvent(self, event):
         self.isSelected = True
         self.selected.emit(self.id_number)
+        bt = event.button()
+        if bt == Qt.LeftButton:
+            print "left"
+        elif bt == Qt.RightButton:
+            print "right"
         if self.scene().pixmap is None:
             super(ImageView, self).mousePressEvent(event)
             return
-        if self._operation == self.OP_ROI_POL:
+        if self.mid_operation == self.OP_ROI_POL:
             # Limit roi drawing to the image
             limit_x = self.image.attributes['cols']
             limit_y = self.image.attributes['rows']
@@ -154,7 +161,7 @@ class ImageView(QtGui.QGraphicsView):
                     self.roi.add_point(mouse_point)
                     event.ignore()
             return
-        elif self._operation == self.OP_ROI_CIRC:
+        elif self.mid_operation == self.OP_ROI_CIRC:
             # Limit roi drawing to the image
             limit_x = self.image.attributes['cols']
             limit_y = self.image.attributes['rows']
@@ -174,7 +181,7 @@ class ImageView(QtGui.QGraphicsView):
 
                     # self.mouseDoubleClickEvent(event)
                     event.ignore()
-        elif self._operation == self.OP_WL:
+        elif self.mid_operation == self.OP_WL:
             self.x_cursor = event.pos().x()
             self.y_cursor = event.pos().y()
         else:
@@ -184,7 +191,8 @@ class ImageView(QtGui.QGraphicsView):
         if self.scene().pixmap is None:
             super(ImageView, self).mouseMoveEvent(event)
             return
-        if self._operation == self.OP_SELECT:
+        self.setCursor(self.DEFAULT_CURSOR)
+        if self.mid_operation == self.OP_SELECT:
             p = self.mapToScene(event.pos())
             val = self.image.value_at(p.x(), p.y())
             val = str(val)
@@ -192,21 +200,21 @@ class ImageView(QtGui.QGraphicsView):
             super(ImageView, self).mouseMoveEvent(event)
             # todo: change cursor when outside the image
             self.setCursor(self.DEFAULT_CURSOR)
-        elif self._operation == self.OP_ROI_POL or self._operation == self.OP_ROI_CIRC:
+        elif self.mid_operation == self.OP_ROI_POL or self.mid_operation == self.OP_ROI_CIRC:
             # Limit roi drawing to the image
             limit_x = self.image.attributes['cols']
             limit_y = self.image.attributes['rows']
             mouse_point = self.mapToScene(event.pos())
             if 0 <= mouse_point.x() < limit_x and 0 <= mouse_point.y() < limit_y:
                 self.setCursor(self.CURSOR_ADD_POINT)
-                if self._operation == self.OP_ROI_CIRC and self.roi is not None:
+                if self.mid_operation == self.OP_ROI_CIRC and self.roi is not None:
                     self.roi.resize(mouse_point)
             else:
                 self.setCursor(self.DEFAULT_CURSOR)
             val = self.image.value_at(mouse_point.x(), mouse_point.y())
             val = str(val)
             self.view_updated.emit("(%i,%i) %s" % (mouse_point.x(), mouse_point.y(), val))
-        elif self._operation == self.OP_WL and self.x_cursor is not None:
+        elif self.mid_operation == self.OP_WL and self.x_cursor is not None:
             dx = event.pos().x() - self.x_cursor
             dy = event.pos().y() - self.y_cursor
             new_center = self.image.attributes['center'] + dx / float(self.width()) * self.WL_RANGE
@@ -237,7 +245,7 @@ class ImageView(QtGui.QGraphicsView):
         if self.scene().pixmap is None:
             super(ImageView, self).mouseDoubleClickEvent(event)
             return
-        if self._operation == self.OP_ROI_POL and self.roi is not None:
+        if self.mid_operation == self.OP_ROI_POL and self.roi is not None:
             # todo: Reassign z values when rois already exist and an overlay is added
             if self.overlay_image is not None:
                 p = self.image.to_ref_frame([QPointF(0, 0)])
@@ -253,9 +261,9 @@ class ImageView(QtGui.QGraphicsView):
             self.roi_finished.emit(True)
             print "put in logger---> ", [p for p in self.roi.polygon()]
             self.roi = None
-            self._operation = self.OP_SELECT
+            self.mid_operation = self.OP_SELECT
             self.setCursor(self.DEFAULT_CURSOR)
-        elif self._operation == self.OP_ROI_CIRC and self.roi is not None:
+        elif self.mid_operation == self.OP_ROI_CIRC and self.roi is not None:
             # todo: Reassign z values when rois already exist and an overlay is added
             if self.overlay_image is not None:
                 p = self.image.to_ref_frame([QPointF(0, 0)])
@@ -270,9 +278,9 @@ class ImageView(QtGui.QGraphicsView):
             self.roi_finished.emit(True)
             print self.roi
             self.roi = None
-            self._operation = self.OP_SELECT
+            self.mid_operation = self.OP_SELECT
             self.setCursor(self.DEFAULT_CURSOR)
-        elif self._operation == self.OP_WL:
+        elif self.mid_operation == self.OP_WL:
             dlg = WLDialog(self.image, self.overlay_image, self.parent())
             dlg.update_images.connect(self.update_dicom_image)
             if self.overlay_image is not None:
@@ -294,7 +302,7 @@ class ImageView(QtGui.QGraphicsView):
 #
 
     def mouseReleaseEvent(self, event):
-        if self._operation == self.OP_WL and self.x_cursor is not None:
+        if self.mid_operation == self.OP_WL and self.x_cursor is not None:
             self.x_cursor = None
             self.y_cursor = None
         else:
@@ -306,16 +314,23 @@ class ImageView(QtGui.QGraphicsView):
 # <----------------------- Slots -------------------------->
 #
 
-    def set_operation(self, operation):
-        self._operation = operation
+    def set_operation(self, button, operation):
+        if button == 0:
+            self.left_operation = operation
+        elif button == 1:
+            self.mid_operation = operation
+
+    def set_operationX(self, operation):
+        self.mid_operation = operation
+        print "operation: ", operation
         self.view_updated.emit("")
         for it in self.scene().selectedItems():
             it.setSelected(False)
-        if operation == self.OP_CHANGE_Z:
+        if operation == self.OP_MIDDLE_CHANGE_Z:
             self.setCursor(self.CURSOR_CHANGE_SLICE)
         elif operation == self.OP_WL:
             self.setCursor(self.CURSOR_WL)
-        elif operation == self. OP_ZOOM:
+        elif operation == self.OP_MIDDLE_ZOOM:
             self.setCursor(self.CURSOR_ZOOM)
         elif operation >= self.OP_ROI_POL:
             self.setCursor(self.CURSOR_ADD_POINT)
