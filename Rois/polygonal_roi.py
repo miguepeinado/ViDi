@@ -144,6 +144,14 @@ class RoiPol(QGraphicsPolygonItem):
 # <---------------------- Functions -------------------->
 #
 
+#
+# <--------------------- override ---------------------->
+#
+    def __str__(self):
+        r = self.boundingRect()
+        p = r.bottomRight() - self.mass_center
+        return "polygonal roi {} with points {}".format(self.get_text(), [p for p in self.polygon()])
+
     def add_point(self, point):
         pol = self.polygon()
         pol.append(point)

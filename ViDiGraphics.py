@@ -6,7 +6,6 @@ v 0.2:  Half-pixel displacement of overlay...fixed
         Black spots on images
 """
 import logging
-import copy
 import numpy as np
 from PyQt4.QtCore import *
 from PyQt4 import QtGui
@@ -234,42 +233,23 @@ class ImageView(QtGui.QGraphicsView):
         if self.scene().pixmap is None:
             super(ImageView, self).mouseDoubleClickEvent(event)
             return
-        if event.button() == Qt.LeftButton:
-            if self.left_operation == self.OP_ROI_POL and self.roi is not None:
-                # todo: Reassign z values when rois already exist and an overlay is added
-                if self.overlay_image is not None:
-                    p = self.image.to_ref_frame([QPointF(0, 0)])
-                    _, n_z = self.overlay_image.from_ref_frame(p)
-                    print "---> overlay z for roi", n_z
-                else:
-                    n_z = self.image.current_index
-                self.roi.set_z(n_z)
-                self.roi.default_label_pos()
-                # Is list of rois worth?. Yes, for roi copy/paste operation
-                self.scene().ROIs.append(self.roi)
-                # self.view_updated.emit("roi finished.")
-                self.roi_finished.emit(True)
-                print "put in logger---> ", [p for p in self.roi.polygon()]
-                self.roi = None
-                self.left_operation = self.OP_SELECT
-                self.viewport().setCursor(self.DEFAULT_CURSOR)
-            elif self.left_operation == self.OP_ROI_CIRC and self.roi is not None:
-                # todo: Reassign z values when rois already exist and an overlay is added
-                if self.overlay_image is not None:
-                    p = self.image.to_ref_frame([QPointF(0, 0)])
-                    _, n_z = self.overlay_image.from_ref_frame(p)
-                    print "---> overlay z for roi", n_z
-                else:
-                    n_z = self.image.current_index
-                self.roi.set_z(n_z)
-                self.roi.default_label_pos()
-                # Is list of rois worth?. Yes, for roi copy/paste operation
-                self.scene().ROIs.append(self.roi)
-                self.roi_finished.emit(True)
-                print self.roi
-                self.roi = None
-                self.left_operation = self.OP_SELECT
-                self.viewport().setCursor(self.DEFAULT_CURSOR)
+        if event.button() == Qt.LeftButton and self.left_operation != self.OP_SELECT and self.roi is not None:
+            # todo: Reassign z values when rois already exist and an overlay is added
+            if self.overlay_image is not None:
+                p = self.image.to_ref_frame([QPointF(0, 0)])
+                _, n_z = self.overlay_image.from_ref_frame(p)
+                print "---> overlay z for roi", n_z
+            else:
+                n_z = self.image.current_index
+            self.roi.set_z(n_z)
+            self.roi.default_label_pos()
+            # Is list of rois worth?. Yes, for roi copy/paste operation
+            self.scene().ROIs.append(self.roi)
+            self.roi_finished.emit(True)
+            print self.roi
+            self.roi = None
+            self.left_operation = self.OP_SELECT
+            self.viewport().setCursor(self.DEFAULT_CURSOR)
             # super(ImageView, self).mouseDoubleClickEvent(event)
         elif event.button() == Qt.RightButton:
             dlg = WLDialog(self.image, self.overlay_image, self.parent())
@@ -433,15 +413,33 @@ class ImageView(QtGui.QGraphicsView):
         dlg = CloneRois(txt, (1, upper_limit))
         if dlg.exec_() == dlg.Accepted:
             slice_range = dlg.get_range()
+            # tiene que ir desde cero...
+            print slice_range
             # Be aware to don't copy rois in their own slice
             scene_rois = self.scene().ROIs
             for r in rois:
                 z0 = r.roi_z
-                for i in range(slice_range[0], slice_range[1]+1):
+                txt = r.get_text()
+                print z0, txt
+                for i in range(slice_range[0], slice_range[1]):
                     if z0 != i:
-                        # QWidget does not support copy
+                        # QWidget does not support copy method so must take a workaround
+                        # (kinda complex stuff with bindings to C++ original objects)
                         # r2 = copy.copy(r)
-                        print("clone roi {} from position {} to position {}".format(r.get_text(), z0, i))
+                        if isinstance(r, RoiPol):
+                            # Create a new object
+                            r2 = RoiPol(None, text=txt, scene=self.scene())
+                            # ...copy its shape
+                            r2.setPolygon(p = r.polygon())
+                        else:
+                            # Create a new object
+                            r2 = RoiCirc(r.mass_center, text=txt, scene=self.scene())
+                            # ...copy its size
+                            r2.setRect(r.rect())
+                        r2.default_label_pos()
+                        r2.set_z(i)
+                        scene_rois.append(r2)
+                        logging.info("clone roi {} from position {} to position {}".format(r.get_text(), z0, i))
 
 
 class ImageScene(QtGui.QGraphicsScene):
