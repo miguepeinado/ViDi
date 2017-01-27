@@ -13,7 +13,6 @@ class RoiCirc(QGraphicsEllipseItem):
         self.setFlags(QGraphicsItem.ItemIsMovable | QGraphicsItem.ItemIsSelectable)
         self.setAcceptHoverEvents(True)
         self.mass_center = center
-        # self.label = LabelItem(text, parent=self, scene=scene)
         self._label = LabelItem(text, self, scene)
         self._label.setDefaultTextColor(self.myOutlineColor)
         self._label.setVisible(False)
@@ -116,9 +115,6 @@ class RoiCirc(QGraphicsEllipseItem):
 # <---------------------- Functions -------------------->
 #
 
-#
-# <----------------- Methods ------------------------->
-#
     def resize(self, point):
         delta_x = abs(self.mass_center.x() - point.x())
         delta_y = abs(self.mass_center.y() - point.y())

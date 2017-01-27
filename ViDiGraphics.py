@@ -1,4 +1,4 @@
- #!/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 v 0.1:  Almost operative
@@ -139,13 +139,13 @@ class ImageView(QtGui.QGraphicsView):
         if self.scene().pixmap is None:
             super(ImageView, self).mousePressEvent(event)
             return
-        if event.button() == Qt.LeftButton:
-            if self.left_operation == self.OP_ROI_POL:
-                # Limit roi drawing to the image
-                limit_x = self.image.attributes['cols']
-                limit_y = self.image.attributes['rows']
-                mouse_point = self.mapToScene(event.pos())
-                if 0 <= mouse_point.x() < limit_x and 0 <= mouse_point.y() < limit_y:
+        # Limit roi drawing to the image
+        limit_x = self.image.attributes['cols']
+        limit_y = self.image.attributes['rows']
+        mouse_point = self.mapToScene(event.pos())
+        if 0 <= mouse_point.x() < limit_x and 0 <= mouse_point.y() < limit_y:
+            if event.button() == Qt.LeftButton:
+                if self.left_operation == self.OP_ROI_POL:
                     if self.roi is None:
                         txt = "--- roi %i ---" % (len(self.scene().ROIs)+1)
                         if self._auto_roi:
@@ -156,13 +156,8 @@ class ImageView(QtGui.QGraphicsView):
                     else:
                         self.roi.add_point(mouse_point)
                     event.ignore()
-                return
-            elif self.left_operation == self.OP_ROI_CIRC:
-                # Limit roi drawing to the image
-                limit_x = self.image.attributes['cols']
-                limit_y = self.image.attributes['rows']
-                mouse_point = self.mapToScene(event.pos())
-                if 0 <= mouse_point.x() < limit_x and 0 <= mouse_point.y() < limit_y:
+                    return
+                elif self.left_operation == self.OP_ROI_CIRC:
                     if self.roi is None:
                         txt = "--- roi %i ---" % (len(self.scene().ROIs) + 1)
                         if self._auto_roi:
@@ -170,17 +165,12 @@ class ImageView(QtGui.QGraphicsView):
                         else:
                             self.roi = RoiCirc(mouse_point, txt, scene=self.scene())
                             self.roi.setSelected(True)
-                        event.ignore()
-                    else:
-                        # add the second point
-                        # p = self.roi.mass_center
-                        # self.mouseDoubleClickEvent(event)
-                        event.ignore()
-        elif event.button() == Qt.RightButton:
-            self.viewport().setCursor(self.CURSOR_WL)
-            self.x_cursor = event.pos().x()
-            self.y_cursor = event.pos().y()
-            return
+                    event.ignore()
+            elif event.button() == Qt.RightButton:
+                self.viewport().setCursor(self.CURSOR_WL)
+                self.x_cursor = event.pos().x()
+                self.y_cursor = event.pos().y()
+                return
         super(ImageView, self).mousePressEvent(event)
 
     def mouseMoveEvent(self, event):

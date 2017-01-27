@@ -16,7 +16,6 @@ class RoiPol(QGraphicsPolygonItem):
         p.append(origin)
         self.setPolygon(p)
         self.outer_polygon = QPolygonF()
-        # self.label = LabelItem(text, parent=self, scene=scene)
         self._label = LabelItem(text, self, scene)
         self._label.setDefaultTextColor(self.myOutlineColor)
         self._label.setVisible(False)
