@@ -4,6 +4,7 @@
   </qresource>
   <qresource prefix="Actions">
     <file>pictures/roi-stats.svg</file>
+    <file>pictures/dosimetry.svg</file>
     <file>pictures/auto-roi.svg</file>
     <file>pictures/normi-13.svg</file>
     <file>pictures/open-file.svg</file>

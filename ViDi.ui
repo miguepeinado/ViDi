@@ -127,7 +127,7 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="act_internal_dosimetry"/>
+   <addaction name="act_dosimetry"/>
    <addaction name="act_normi13"/>
   </widget>
   <action name="actExit">
@@ -390,16 +390,15 @@
    </property>
   </action>
   <action name="act_dosimetry">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/Actions/pictures/dosimetry.svg</normaloff>:/Actions/pictures/dosimetry.svg</iconset>
+   </property>
    <property name="text">
-    <string>internal dosimetry</string>
+    <string>Internal dosimetry</string>
    </property>
    <property name="toolTip">
     <string>Opens internal dosimetry tool</string>
-   </property>
-  </action>
-  <action name="act_internal_dosimetry">
-   <property name="text">
-    <string>Internal dosimetry</string>
    </property>
   </action>
   <action name="act_show_info">
