@@ -3,6 +3,10 @@ from statistics import Stats
 
 class Voi:
 
+    SOURCE_ROLE = 1
+    TARGET_ROLE = 2
+    OAR_ROLE = 4
+
     def __init__(self, label, roi_s):
         self.label = label
         # Duck typing for vois defined from a single roi
@@ -12,7 +16,14 @@ class Voi:
         except TypeError:
             self.roi_list = []
             self.roi_list.append(roi_s)
+        self._role = 0
         self.stats = Stats()
+
+    def set_role(self, role):
+        self._role = role
+
+    def get_role(self):
+        return self._role
 
     def append(self, roi):
         self.roi_list.append(roi)

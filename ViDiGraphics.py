@@ -370,7 +370,7 @@ class ImageView(QtGui.QGraphicsView):
         self.scene().set_overlay(self.overlay_image.pixmap_for_index(nz2))
         return nz2
 
-    def get_stats(self):
+    def get_vois(self, get_stats=True):
         """Define all the VOIs actually in image(s) from the rois already defined and all its statistics"""
         self.VOIs = []
         for r in self.scene().ROIs:
@@ -404,13 +404,14 @@ class ImageView(QtGui.QGraphicsView):
                 else:
                     pol = r.mapRectToScene(r.boundingRect())
                     roi_type = "ellipse"
-            stats = statistics.calculate(pol, roi_type, px)
-            r.set_stats(stats)
+            if get_stats:
+                stats = statistics.calculate(pol, roi_type, px)
+                r.set_stats(stats)
 
     def show_stats(self):
         if len(self.scene().ROIs) == 0:
             return
-        self.get_stats()
+        self.get_vois()
         dlg = RoiStats(self.VOIs)
         dlg.exec_()
 
