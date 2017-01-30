@@ -106,6 +106,9 @@ class RoiCirc(QGraphicsEllipseItem):
             else:
                 self.setCursor(self.DEFAULT_CURSOR)
 
+#
+# <--------------------- override ---------------------->
+#
     def __str__(self):
         r = self.boundingRect()
         p = r.bottomRight() - self.mass_center

@@ -24,4 +24,4 @@ class CloneRois(QDialog, ui_CloneRois.Ui_Dialog):
         self.spb_to_slice.setValue(limits[1])
 
     def get_range(self):
-        return self.spb_from_slice.value(), self.spb_to_slice.value()
+        return self.spb_from_slice.value() - 1, self.spb_to_slice.value()
