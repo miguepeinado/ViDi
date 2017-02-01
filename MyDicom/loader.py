@@ -166,7 +166,7 @@ class ImageLoader(PyQt4.QtCore.QThread):
                     raise AttributeError("different images have not the same size")
                 # Same machine or frame of reference
                 # How to define a 3D sequence or a time series
-                ou = ou[np.newaxis,:,:]
+                ou = ou[np.newaxis, :, :]
                 output_units = np.vstack([output_units, ou])
             # get slice position (relative to the origin)
             z_pos = self.get_z_position(dicom_file, im_pos[2])

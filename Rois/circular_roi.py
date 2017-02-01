@@ -1,7 +1,7 @@
 from PyQt4.QtGui import *
 from PyQt4.QtCore import Qt, QPointF, QRectF
 from label import LabelItem
-import MyTools.geometry as geometry
+import geometry
 
 
 class RoiCirc(QGraphicsEllipseItem):

@@ -1,7 +1,7 @@
 from PyQt4.QtGui import *
 from PyQt4.QtCore import Qt, QPointF
 from label import LabelItem
-import MyTools.geometry as geometry
+import geometry
 
 
 class RoiPol(QGraphicsPolygonItem):
@@ -139,11 +139,6 @@ class RoiPol(QGraphicsPolygonItem):
             else:
                 self.setCursor(self.DEFAULT_CURSOR)
 
-
-#
-# <---------------------- Functions -------------------->
-#
-
 #
 # <--------------------- override ---------------------->
 #
@@ -152,6 +147,9 @@ class RoiPol(QGraphicsPolygonItem):
         p = r.bottomRight() - self.mass_center
         return "polygonal roi {} with points {}".format(self.get_text(), [p for p in self.polygon()])
 
+#
+# <---------------------- Functions -------------------->
+#
     def add_point(self, point):
         pol = self.polygon()
         pol.append(point)

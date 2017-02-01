@@ -4,7 +4,6 @@
 import numpy as np
 import PyQt4.QtCore
 import PyQt4.QtGui
-import math
 
 
 __author__ = "M.A. Peinado"
@@ -100,7 +99,7 @@ class DicomImage:
         if 0 <= x < self._pixel_values.shape[2] and 0 <= y < self._pixel_values.shape[1]:
             x = int(x)
             y = int(y)
-            return self._pixel_values[self.current_index,y, x]
+            return self._pixel_values[self.current_index, y, x]
 
     def pixmap(self):
         pv = self._pixel_values[self.current_index, :, :]

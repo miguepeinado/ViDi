@@ -1,6 +1,6 @@
 from PyQt4.QtGui import QPolygonF
 from PyQt4.QtCore import Qt, QPointF
-import MyTools.geometry as geometry
+import geometry
 
 
 class Stats:
@@ -41,12 +41,10 @@ def calculate(roi, roi_type, pixel_array):
     p2 = rect.bottomRight()
     if roi_type == "ellipse":
         p_center = p1 + QPointF(a, b)
-        print "ellipse ", p_center, (a, b)
     j_min = int(round(p1.x()))
     j_max = int(round(p2.x()))
     i_min = int(round(p1.y()))
     i_max = int(round(p2.y()))
-    print "intervals", j_min, j_max, i_min, i_max
     sum1 = 0
     sum2 = 0
     n = 0
