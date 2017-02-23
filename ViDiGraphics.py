@@ -11,7 +11,7 @@ from PyQt4.QtCore import *
 from PyQt4 import QtGui
 from Dialogs import *
 from Rois import *
-from SVoxels import *
+import SVoxels
 
 __author__ = "M.A. Peinado"
 __copyright__ = "2016, M.A. Peinado"
@@ -405,10 +405,51 @@ class ImageView(QtGui.QGraphicsView):
         if len(self.scene().ROIs) == 0:
             return
         self.get_vois()
-        dlg = VoisRole(self.VOIs)
+        dlg = SVoxels.VoisRole(self.VOIs)
         if dlg.exec_() == dlg.Accepted:
+            # Get pixel values
+            px_values = self.overlay_image.pixel_values() if self.overlay_image is not None \
+                                                          else self.image.pixel_values()
+            f_quant = 5.80786e-5  # [MBq/count]
+            # Parse file with s-factors  [mGy/(MBq·s)]
+            s_values = SVoxels.s_value_parser("177Lu", 4.42)
+            # Compute all sources indices (mixed, no need of getting each source indices separately)
+            source_indices = []
             for v in self.VOIs:
-                print v.label, v.get_role()
+                if v.get_role() & Voi.SOURCE_ROLE:
+                    for r_source in v.roi_list:
+                        pol, roi_type, _ = self.roi_info_4_stats(r_source)
+                        source_indices += SVoxels.roi2indices(pol, roi_type, r_source.roi_z)
+            # Compute all target indices (separately for each voi. Must store total doses and DVH)
+            for v in self.VOIs:
+                target_indices = []
+                if v.get_role() > Voi.SOURCE_ROLE:
+                    for r_target in v.roi_list:
+                        pol, roi_type, _ = self.roi_info_4_stats(r_target)
+                        target_indices += SVoxels.roi2indices(pol, roi_type, r_target.roi_z)
+                # Compute doses
+                doses = {}      # Needed? We only need total organ doses. Can make DVH on the fly?
+                for tix in target_indices:
+                    for six in source_indices:
+                        # Get 3D distances (z index is stored in first position!!)
+                        dist_3d = (abs(tix[1] - six[1]), abs(tix[2] - six[2]), abs(tix[0] - six[0]))
+                        # Multiply s-factor with counts on pixel and quantification factor
+                        # Be careful...pixel values are indexed with z index in first position!!!
+                        try:
+                            d = s_values[dist_3d] * px_values[six] * f_quant
+                        except IndexError:
+                            d = s_values[(5, 5, 5)] * px_values[six] * f_quant
+                        # Add to doses
+                        try:
+                            doses[tix] += d
+                        except KeyError:
+                            # index key does not exists => must create first
+                            doses[tix] = d
+                    # Must store doses: As source target-pair or only as target???
+                v.set_doses(doses)
+                # Total dose
+                print v.label, v.doses().get_total()
+
 
     def show_info(self, show):
         self.scene()._draw_general_info = show
@@ -421,9 +462,11 @@ class ImageView(QtGui.QGraphicsView):
                 rois.append(r)
                 txt += "\n  -> {0}".format(r.get_text())
         if len(rois) == 0:
+            QtGui.QMessageBox.critical(None, "Clone Rois", "Please select one or several rois to clone.")
             return
         upper_limit = len(self.overlay_image.slice_locations if self.overlay_image is not None
                           else self.image.slice_locations)
+        # todo: Limit the rois to the extent of image when overlay exceeds the limits of the image
         dlg = CloneRois(txt, (1, upper_limit))
         if dlg.exec_() == dlg.Accepted:
             slice_range = dlg.get_range()
@@ -454,6 +497,7 @@ class ImageView(QtGui.QGraphicsView):
                             r2.setRect(r.rect())
                         r2.default_label_pos()
                         r2.set_z(i)
+                        print r2.is_selected()
                         r2.setVisible(False)
                         scene_rois.append(r2)
                         logging.info("clone roi {} from position {} to position {}".format(r.get_text(), z0, i))

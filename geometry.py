@@ -10,7 +10,7 @@ __email__ = "miguel.peinado@sespa.es"
 __status__ = "prototype"
 
 
-def complement2(self, memory_value, base):
+def complement2(memory_value, base):
     """
     Get the negative value with a 2-complement given by the first parameter
     in a binary length defined by the second parameter:

@@ -18,6 +18,7 @@ class Voi:
             self.roi_list.append(roi_s)
         self._role = 0
         self.stats = Stats()
+        self._voxel_doses = None
 
     def set_role(self, role):
         self._role = role
@@ -54,3 +55,9 @@ class Voi:
         self.stats.mean = mean / total_points
         self.stats.variance = variance / total_points - self.stats.mean ** 2
         return self.stats
+
+    def set_doses(self, voxel_doses):
+        self._voxel_doses = voxel_doses
+
+    def doses(self):
+        return self._voxel_doses
