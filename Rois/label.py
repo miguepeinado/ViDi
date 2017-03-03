@@ -1,8 +1,9 @@
 from PyQt4.QtGui import QGraphicsTextItem
 from PyQt4.QtCore import Qt
 
-class LabelItem(QGraphicsTextItem):
 
+class LabelItem(QGraphicsTextItem):
+    # todo: Change the delegate to a combobox
     def __init__(self, text=None, parent=None, scene=None):
         super(LabelItem, self).__init__(text, parent, scene)
         self.setFlags(QGraphicsTextItem.ItemIsMovable | QGraphicsTextItem.ItemIsSelectable |

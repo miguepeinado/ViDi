@@ -20,12 +20,12 @@ class VoisRole(QDialog):
         button_bar.accepted.connect(self.accept)
         button_bar.rejected.connect(self.reject)
         self.fill_table()
+        self.resize(550, 200)
 
     def fill_table(self):
         rows = len(self.vois)
         self.table.setRowCount(rows)
         self.table.verticalHeader().hide()
-        self.table.horizontalHeader().hide()
         self.table.setColumnCount(4)
         for row in range(rows):
             # put the vois label

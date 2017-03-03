@@ -5,7 +5,7 @@ import geometry
 
 
 class RoiCirc(QGraphicsEllipseItem):
-    # todo: Copy/paste rois
+    # todo: Ellipse roi can be rotated(How to do when defining it?)
     def __init__(self, center, text=None, parent=None, scene=None):
         super(RoiCirc, self).__init__(parent, scene)
         # some gui tweaks
@@ -112,7 +112,7 @@ class RoiCirc(QGraphicsEllipseItem):
     def __str__(self):
         r = self.boundingRect()
         p = r.bottomRight() - self.mass_center
-        return "ellipse roi %s with center (%f, %f) and semi-axes (%f, %f)" % \
+        return "ellipse roi '%s' with center (%f, %f) and semi-axes (%f, %f)" % \
                (self.get_text(), self.mass_center.x(), self.mass_center.y(), p.x(), p.y())
 #
 # <---------------------- Functions -------------------->

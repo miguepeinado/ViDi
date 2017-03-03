@@ -427,7 +427,6 @@ class ImageView(QtGui.QGraphicsView):
                     for r_target in v.roi_list:
                         pol, roi_type, _ = self.roi_info_4_stats(r_target)
                         target_indices += SVoxels.roi2indices(pol, roi_type, r_target.roi_z)
-                # Compute doses
                 doses = {}      # Needed? We only need total organ doses. Can make DVH on the fly?
                 for tix in target_indices:
                     for six in source_indices:
@@ -445,11 +444,12 @@ class ImageView(QtGui.QGraphicsView):
                         except KeyError:
                             # index key does not exists => must create first
                             doses[tix] = d
-                    # Must store doses: As source target-pair or only as target???
+                    # Must store doses: Can discard keys (target voxel position) when all sources have been computed
+                    # Prefer to keep them if isodoses curves are drawed later
                 v.set_doses(doses)
                 # Total dose
-                print v.label, v.doses().get_total()
-
+                d = SVoxels.DoseReport(self.VOIs)
+                d.show()
 
     def show_info(self, show):
         self.scene()._draw_general_info = show
