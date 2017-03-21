@@ -41,15 +41,15 @@ def roi2indices(roi, roi_type, k):
 
 def s_value_parser(isotope, vx_size):
     """returns the s-voxel values for the isotope and voxel size"""
+    import logging
     import csv
     import numpy as np
     from PyQt4.QtCore import QDir
 
     # todo: Verify if changes in directory file is necessary
     # todo: Retrieve from url if file does not exist
-    data_dir = QDir.currentPath() + "/SVoxels/"
-    print data_dir
     file_name = QDir.currentPath() + "/SVoxels/{}{}mmsoft.txt".format(isotope, vx_size)
+    logging.info("Parsing {} ...".format(file_name))
     index_value_pair = []
     with open(file_name, 'rb') as csv_file:
         reader = csv.reader(csv_file, delimiter='\t', quotechar='\'')
@@ -64,4 +64,5 @@ def s_value_parser(isotope, vx_size):
     s_values = np.ndarray(shape)
     for iv in index_value_pair:
         s_values[iv[0]] = iv[1]
+    logging.info("...s values read")
     return s_values

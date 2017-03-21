@@ -7,6 +7,7 @@ import PyQt4.QtCore
 import PyQt4.QtGui
 import dicom
 from dicom_image import DicomImage
+from patient_data import PatientData
 import tools
 
 __author__ = "M.A. Peinado"
@@ -147,13 +148,15 @@ class ImageLoader(PyQt4.QtCore.QThread):
                 element, _ = tools.in_(dicom_file, 'PixelSpacing')
                 px_spacing = [float(x) for x in element.value]  # Transform to float values
                 slice_thickness = dicom_file.SliceThickness if 'SliceThickness' in dicom_file else None
+                # Loads demographic data
+                patient_data = PatientData(dicom_file)
                 self.general_attributes = {'allocated': allocated, 'stored': stored, 'high_bit': high_bit,
                                            'samples_per_pixel': samples_per_pixel,
                                            'rows': rows, 'cols': cols, 'n_images': n_images,
                                            'window': window, 'center': center, 'data_type': data_type,
                                            'pixel_units': pixel_units, 'padVal': padding_value, 'inverted': inverted,
                                            'frame_uid': cfr_uid, 'cosines':cs_xy, 'slice_thickness': slice_thickness,
-                                           'origin': im_pos, 'pixel_spacing': px_spacing}
+                                           'origin': im_pos, 'pixel_spacing': px_spacing, 'patient_data': patient_data}
                 dicom_image.set_attributes(self.general_attributes)
                 dicom_image.is_sequence = self.is_sequence
                 dicom_image.is_overlay = self.is_overlay

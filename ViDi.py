@@ -122,7 +122,6 @@ class ViDi(QtGui.QMainWindow, ui_ViDi.Ui_MainWindow):
         self.act_show_info.triggered.connect(self.view.show_info)
         self.tb_edit.actionTriggered.connect(self.set_operation)
         self.view.roi_finished.connect(self.uncheck_rois)
-
         self.act_roi_auto.triggered.connect(self.view.set_auto_roi)
         self.act_clone_rois.triggered.connect(self.view.clone_rois)
         self.act_get_stats.triggered.connect(self.view.show_stats)

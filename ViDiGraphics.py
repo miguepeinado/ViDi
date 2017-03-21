@@ -110,7 +110,8 @@ class ImageView(QtGui.QGraphicsView):
                 self.view_updated.emit(txt)
                 return
             self.viewport().setCursor(self.CURSOR_CHANGE_SLICE)
-            if num_steps > 0:
+            # Change sign to move to head when wheel is rolling up
+            if num_steps < 0:
                 n_z, pixmap = self.image.next_image()
             else:
                 n_z, pixmap = self.image.prev_image()
@@ -146,7 +147,9 @@ class ImageView(QtGui.QGraphicsView):
             if event.button() == Qt.LeftButton:
                 if self.left_operation == self.OP_ROI_POL:
                     if self.roi is None:
-                        txt = "--- roi %i ---" % (len(self.scene().ROIs)+1)
+                        # Get the name from the last roi defined
+                        n = len(self.scene().ROIs)
+                        txt = "- roi 1 -" if n == 0 else self.scene().ROIs[n-1].get_text()
                         if self._auto_roi:
                             pass    # floodfill with point
                         else:
@@ -158,7 +161,9 @@ class ImageView(QtGui.QGraphicsView):
                     return
                 elif self.left_operation == self.OP_ROI_CIRC:
                     if self.roi is None:
-                        txt = "--- roi %i ---" % (len(self.scene().ROIs) + 1)
+                        # Get the name from the last roi defined
+                        n = len(self.scene().ROIs)
+                        txt = "- roi 1 -" if n == 0 else self.scene().ROIs[n - 1].get_text()
                         if self._auto_roi:
                             pass  # floodfill with point
                         else:
@@ -314,13 +319,14 @@ class ImageView(QtGui.QGraphicsView):
                 raise ValueError("Can't correlate, the frames of reference of the image and overlay are not the same")
             if not np.array_equal(self.image.attributes['cosines'], image.attributes['cosines']):
                 self.scene().switch_overlay_item.view_overlay = False
-                raise ValueError("Can't correlate, the dataset have not the same orientation")
+                raise ValueError("Can't correlate, the datasets have not the same orientation")
         except AttributeError:
-
             txt = "No reference coordinate system or image orientation tag are present.\n"
-            txt +=  "Base/overlay matching are not safe and will be done at your own risk.\n"
-            print txt
-            pass
+            txt += "Base/overlay matching are not safe and will not be done."
+            raise AttributeError(txt)
+        if self.image.attributes['patient_data'].id != image.attributes['patient_data'].id:
+            self.scene().switch_overlay_item.view_overlay = False
+            raise ValueError("Can't correlate, patient IDs are not the same")
         self.overlay_image = image
         # self.overlay_image.pixmap_update.connect(self.update_overlay_image)
         p = self.image.to_ref_frame([QPointF(0, 0)])
@@ -402,6 +408,8 @@ class ImageView(QtGui.QGraphicsView):
         dlg.exec_()
 
     def dosimetry(self):
+        logging.info("<---------------------- DOSIMETRY -------------------------->")
+        # todo: Must avoid target/OAR rois one inside the other
         if len(self.scene().ROIs) == 0:
             return
         self.get_vois()
@@ -411,6 +419,7 @@ class ImageView(QtGui.QGraphicsView):
             px_values = self.overlay_image.pixel_values() if self.overlay_image is not None \
                                                           else self.image.pixel_values()
             f_quant = 5.80786e-5  # [MBq/count]
+            t_eff = 80 * 3600     # [s]
             # Parse file with s-factors  [mGy/(MBq·s)]
             s_values = SVoxels.s_value_parser("177Lu", 4.42)
             # Compute all sources indices (mixed, no need of getting each source indices separately)
@@ -435,9 +444,11 @@ class ImageView(QtGui.QGraphicsView):
                         # Multiply s-factor with counts on pixel and quantification factor
                         # Be careful...pixel values are indexed with z index in first position!!!
                         try:
-                            d = s_values[dist_3d] * px_values[six] * f_quant
+                            d = s_values[dist_3d] * px_values[six] * f_quant * t_eff
+                            # print "s[", six, "->", tix, "]=", s_values[dist_3d]
                         except IndexError:
-                            d = s_values[(5, 5, 5)] * px_values[six] * f_quant
+                            d = s_values[(5, 5, 5)] * px_values[six] * f_quant * t_eff
+                            # print "s[", six, "->", tix, "]=", s_values[(5, 5, 5)]
                         # Add to doses
                         try:
                             doses[tix] += d
@@ -534,8 +545,9 @@ class ImageScene(QtGui.QGraphicsScene):
                 point_size = intended_size/self.zoom
                 font.setPointSizeF(point_size)
                 painter.setFont(font)
+                metrics = QtGui.QFontMetrics(font)
                 x = 5
-                y = interline_space
+                y = 10 + interline_space
                 point = view.mapToScene(QPoint(x, y))
                 painter.drawText(point, "Zoom: %0.1f" % self.zoom)
                 y += interline_space
@@ -554,10 +566,17 @@ class ImageScene(QtGui.QGraphicsScene):
                     if info['total'] > 1:
                         txt += " ({0}/{1})".format(info['index'] + 1, info['total'])
                     painter.drawText(point, txt)
-
                 y += interline_space
                 point = view.mapToScene(QPoint(x, y))
                 painter.drawText(point, txt_wl)
+                patient_data = info['patient_data'].demographics()
+                y = 10 + interline_space
+                for data in patient_data:
+                    x = view.width() - 5
+                    point = view.mapToScene(QPoint(x, y))
+                    point -= QPoint(metrics.width(data), 0)
+                    painter.drawText(point, data)
+                    y += interline_space
             self.switch_overlay_item.setVisible(True)
             # Draw the folded right upper corner
             w = view.width() - 1

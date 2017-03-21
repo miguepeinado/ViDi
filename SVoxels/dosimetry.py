@@ -26,7 +26,7 @@ class VoisRole(QDialog):
         rows = len(self.vois)
         self.table.setRowCount(rows)
         self.table.verticalHeader().hide()
-        self.table.setColumnCount(4)
+        self.table.setColumnCount(5)
         for row in range(rows):
             # put the vois label
             item = QTableWidgetItem(self.vois[row].label)
