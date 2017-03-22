@@ -251,11 +251,12 @@ class ImageView(QtGui.QGraphicsView):
                 self.roi.default_label_pos()
                 # Is list of rois worth?. Yes, for roi copy/paste operation
                 self.scene().ROIs.append(self.roi)
-                self.roi_finished.emit(True)
                 print self.roi
                 self.roi = None
-                self.left_operation = self.OP_SELECT
-                self.viewport().setCursor(self.DEFAULT_CURSOR)
+                # Let the roi definition activated to draw several rois one after the other
+                # self.roi_finished.emit(True)
+                # self.left_operation = self.OP_SELECT
+                # self.viewport().setCursor(self.DEFAULT_CURSOR)
             elif self.left_operation == self.OP_SELECT:
                 super(ImageView, self).mouseDoubleClickEvent(event)
         elif event.button() == Qt.RightButton:
