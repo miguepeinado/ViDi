@@ -414,7 +414,8 @@ class ImageView(QtGui.QGraphicsView):
         if len(self.scene().ROIs) == 0:
             return
         self.get_vois()
-        dlg = SVoxels.VoisRole(self.VOIs)
+        info = self.image.get_info()
+        dlg = SVoxels.Dosimetry(self.VOIs, info['patient_data'].as_dict())
         if dlg.exec_() == dlg.Accepted:
             # Get pixel values
             px_values = self.overlay_image.pixel_values() if self.overlay_image is not None \

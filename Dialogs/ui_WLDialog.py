@@ -122,7 +122,7 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), Dialog.accept)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), Dialog.reject)
+        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("close_db()")), Dialog.reject)
         QtCore.QObject.connect(self.sld_center, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.spb_center.setValue)
         QtCore.QObject.connect(self.spb_center, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.sld_center.setValue)
         QtCore.QObject.connect(self.sld_window, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.spb_window.setValue)
