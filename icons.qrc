@@ -23,6 +23,7 @@
     <file>pictures/unlock.svg</file>
     <file>pictures/undo.svg</file>
     <file>pictures/lock.svg</file>
+    <file>pictures/phantom.svg</file>
   </qresource>
   <qresource prefix="Cursors">
     <file>pictures/del-point-cursor.svg</file>

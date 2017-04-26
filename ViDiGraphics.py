@@ -373,6 +373,9 @@ class ImageView(QtGui.QGraphicsView):
                 pol, roi_type, px = self.roi_info_4_stats(r)
                 stats = statistics.calculate(pol, roi_type, px)
                 r.set_stats(stats)
+        if get_stats:
+            for v in self.VOIs:
+                v.calculate_stats()
 
     def roi_info_4_stats(self, r):
             logging.info("retrieving stats for {0}".format(r.get_text()))
@@ -415,7 +418,7 @@ class ImageView(QtGui.QGraphicsView):
             return
         self.get_vois()
         info = self.image.get_info()
-        dlg = SVoxels.Dosimetry(self.VOIs, info['patient_data'].as_dict())
+        dlg = SVoxels.Dosimetry(self.VOIs, info['patient_data'].as_dict(), info['acq_date_time'])
         if dlg.exec_() == dlg.Accepted:
             # Get pixel values
             px_values = self.overlay_image.pixel_values() if self.overlay_image is not None \

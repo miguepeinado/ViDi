@@ -150,13 +150,15 @@ class ImageLoader(PyQt4.QtCore.QThread):
                 slice_thickness = dicom_file.SliceThickness if 'SliceThickness' in dicom_file else None
                 # Loads demographic data
                 patient_data = PatientData(dicom_file)
+                date, time = self.get_date_time_acquisition(dicom_file)
                 self.general_attributes = {'allocated': allocated, 'stored': stored, 'high_bit': high_bit,
                                            'samples_per_pixel': samples_per_pixel,
                                            'rows': rows, 'cols': cols, 'n_images': n_images,
                                            'window': window, 'center': center, 'data_type': data_type,
                                            'pixel_units': pixel_units, 'padVal': padding_value, 'inverted': inverted,
                                            'frame_uid': cfr_uid, 'cosines':cs_xy, 'slice_thickness': slice_thickness,
-                                           'origin': im_pos, 'pixel_spacing': px_spacing, 'patient_data': patient_data}
+                                           'origin': im_pos, 'pixel_spacing': px_spacing, 'patient_data': patient_data,
+                                           'acq_date_time': (date, time)}
                 dicom_image.set_attributes(self.general_attributes)
                 dicom_image.is_sequence = self.is_sequence
                 dicom_image.is_overlay = self.is_overlay
@@ -198,7 +200,6 @@ class ImageLoader(PyQt4.QtCore.QThread):
         logging.info("voxel size (%f, %f, %f): " % (px_spacing[0], px_spacing[1], slice_thickness))
         logging.info("slice locations" + str(z_positions))
         dicom_image.set_pixel_values(output_units)
-
         dicom_image.set_slice_locations(z_positions)
         self.completed.emit([dicom_image])
         return
@@ -214,6 +215,24 @@ class ImageLoader(PyQt4.QtCore.QThread):
                 z_rel = float(element.value[keyword[k]]) - z_origin
                 return z_rel
         return None
+
+    @staticmethod
+    def get_date_time_acquisition(data_set):
+        if 'AcquisitionDateTime' in data_set:
+            dt = data_set.AcquisitionDateTime
+            dt = dt.split(".")
+            dt = dt[0]
+            d = PyQt4.QtCore.QDate(int(dt[0:4]), int(dt[4:6]), int(dt[6:8]))
+            t = PyQt4.QtCore.QTime(int(dt[8:10]), int(dt[10:12]), int(dt[12:]))
+        if 'AcquisitionTime' in data_set:
+            t = data_set.AcquisitionTime
+            t = t.split(".")
+            t = t[0]
+            t = PyQt4.QtCore.QTime(int(t[0:2]), int(t[2:4]), int(t[4:]))
+        if 'AcquisitionDate' in data_set:
+            d = data_set.AcquisitionDate
+            d = PyQt4.QtCore.QDate(int(d[0:4]), int(d[4:6]), int(d[6:]))
+        return d, t
 
     @staticmethod
     def complement2(memory_value, base):

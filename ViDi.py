@@ -178,7 +178,6 @@ class ViDi(QtGui.QMainWindow, ui_ViDi.Ui_MainWindow):
     def load_image_completed(self):
         """Slot to process the signal of the image loader in MyDicom"""
         self.tb_edit.setEnabled(True)
-        self.act_hybrid.setEnabled(True)
         self.status_bar.removeWidget(self.progress_bar)
 
     def load_overlay_completed(self, overlay_image):

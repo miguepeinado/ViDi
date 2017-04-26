@@ -74,8 +74,9 @@
    </attribute>
    <addaction name="act_open_file"/>
    <addaction name="separator"/>
+   <addaction name="act_tools"/>
+   <addaction name="separator"/>
    <addaction name="act_settings"/>
-   <addaction name="act_show_info"/>
    <addaction name="separator"/>
    <addaction name="actExit"/>
   </widget>
@@ -101,9 +102,8 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="act_show_info"/>
    <addaction name="act_zoom"/>
-   <addaction name="separator"/>
-   <addaction name="act_tools"/>
    <addaction name="separator"/>
    <addaction name="act_roi_auto"/>
    <addaction name="act_roi_pol"/>
@@ -128,6 +128,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="act_dosimetry"/>
+   <addaction name="act_phantom"/>
    <addaction name="act_normi13"/>
   </widget>
   <action name="actExit">
@@ -151,13 +152,14 @@
    </property>
    <property name="icon">
     <iconset resource="icons.qrc">
-     <normaloff>:/Actions/pictures/zoom.svg</normaloff>:/Actions/pictures/zoom.svg</iconset>
+     <normaloff>:/Actions/pictures/zoom.svg</normaloff>
+     <activeon>:/Actions/pictures/change-slice.svg</activeon>:/Actions/pictures/zoom.svg</iconset>
    </property>
    <property name="text">
     <string>Zoom</string>
    </property>
    <property name="toolTip">
-    <string>Zoom image</string>
+    <string>Zoom image/Move Z</string>
    </property>
   </action>
   <action name="actWL">
@@ -422,6 +424,18 @@
    </property>
    <property name="toolTip">
     <string>Clone selected roi(s) to other slices</string>
+   </property>
+  </action>
+  <action name="act_phantom">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/Actions/pictures/phantom.svg</normaloff>:/Actions/pictures/phantom.svg</iconset>
+   </property>
+   <property name="text">
+    <string>MIRD-5 phantom</string>
+   </property>
+   <property name="toolTip">
+    <string>SPECT/CT image of MIRD-5 phantom</string>
    </property>
   </action>
  </widget>

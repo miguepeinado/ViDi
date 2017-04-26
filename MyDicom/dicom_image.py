@@ -63,7 +63,7 @@ class DicomImage:
         z = self.to_ref_frame([PyQt4.QtCore.QPointF(0, 0)])
         return {'z': z[0][2], 'index': self.current_index, 'total': len(self.slice_locations),
                 'window': self.attributes['window'], 'center': self.attributes['center'],
-                'patient_data': self.attributes['patient_data']}
+                'patient_data': self.attributes['patient_data'], 'acq_date_time': self.attributes['acq_date_time']}
 
 # ...Slice location
 
