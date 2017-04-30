@@ -423,8 +423,8 @@ class ImageView(QtGui.QGraphicsView):
             # Get pixel values
             px_values = self.overlay_image.pixel_values() if self.overlay_image is not None \
                                                           else self.image.pixel_values()
-            f_quant = 5.80786e-5  # [MBq/count]
-            t_eff = 80 * 3600     # [s]
+            f_quant = dlg.f_quant  # [MBq/count]
+            t_eff = dlg.residence_time     # [h]
             # Parse file with s-factors  [mGy/(MBq·s)]
             s_values = SVoxels.s_value_parser("177Lu", 4.42)
             # Compute all sources indices (mixed, no need of getting each source indices separately)
@@ -449,10 +449,10 @@ class ImageView(QtGui.QGraphicsView):
                         # Multiply s-factor with counts on pixel and quantification factor
                         # Be careful...pixel values are indexed with z index in first position!!!
                         try:
-                            d = s_values[dist_3d] * px_values[six] * f_quant * t_eff
+                            d = s_values[dist_3d] * px_values[six] * f_quant * t_eff[six]
                             # print "s[", six, "->", tix, "]=", s_values[dist_3d]
                         except IndexError:
-                            d = s_values[(5, 5, 5)] * px_values[six] * f_quant * t_eff
+                            d = s_values[(5, 5, 5)] * px_values[six] * f_quant * t_eff[six]
                             # print "s[", six, "->", tix, "]=", s_values[(5, 5, 5)]
                         # Add to doses
                         try:
