@@ -4,7 +4,9 @@
       <w>dicom</w>
       <w>dosimetry</w>
       <w>pixmap</w>
+      <w>semiaxis</w>
       <w>vois</w>
+      <w>voxels</w>
     </words>
   </dictionary>
 </component>
